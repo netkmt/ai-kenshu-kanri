@@ -319,6 +319,7 @@ tr:hover td { background:var(--surface2); }
           <div class="step-form-item"><div class="step-form-label">発注書受領</div><select class="step-form-select" id="p-order"><option value="todo">— 未</option><option value="done">✓ 済</option><option value="na">N/A 対応不要</option></select></div>
           <div class="step-form-item"><div class="step-form-label">労務士代行</div><select class="step-form-select" id="p-lawyer"><option value="todo">— 未設定</option><option value="done">有</option><option value="na">無 / 対応不要</option></select></div>
           <div class="step-form-item"><div class="step-form-label">計画届提出</div><select class="step-form-select" id="p-plan"><option value="todo">— 未</option><option value="done">✓ 提出済</option><option value="na">N/A 対応不要</option></select></div>
+          <div class="step-form-item"><div class="step-form-label">計画届 提出日</div><input class="step-form-select" id="f-planDate" type="date" style="padding:5px 7px;"></div>
           <div class="step-form-item"><div class="step-form-label">申請代行契約書</div><select class="step-form-select" id="p-contractDoc"><option value="todo">— 未</option><option value="pending">… 対応中</option><option value="done">✓ 完了</option><option value="na">N/A 対応不要</option></select></div>
           <div class="step-form-item"><div class="step-form-label">申請代行請求書</div><select class="step-form-select" id="p-contractInv"><option value="todo">— 未</option><option value="pending">… 対応中</option><option value="done">✓ 完了</option><option value="na">N/A 対応不要</option></select></div>
           <div class="step-form-item"><div class="step-form-label">計画届受理</div><select class="step-form-select" id="p-approval"><option value="todo">— 未</option><option value="done">✓ 受理済</option><option value="na">N/A 対応不要</option></select></div>
@@ -398,6 +399,7 @@ async function fetchCases() {
     note:   row.note    || '',
     irregDeadline: row.irregDeadline || '',
     irregContent:  row.irregContent  || '',
+    planDate:      row.planDate      || '',
     steps: {
       date:        row.s_date        || 'todo',
       people:      row.s_people      || 'todo',
@@ -423,6 +425,7 @@ async function saveCases() {
     people: c.people, bureau: c.bureau, note: c.note,
     irregDeadline: c.irregDeadline || '',
     irregContent:  c.irregContent  || '',
+    planDate:      c.planDate      || '',
     s_date:        c.steps.date,
     s_people:      c.steps.people,
     s_order:       c.steps.order,
@@ -593,6 +596,7 @@ function openModal(id) {
     });
     document.getElementById('f-irreg-deadline').value = c.irregDeadline || '';
     document.getElementById('f-irreg-content').value  = c.irregContent  || '';
+    document.getElementById('f-planDate').value        = c.planDate      || '';
     const sv = c.status;
     const radio = document.querySelector(`input[name="f-status"][value="${sv}"]`);
     if(radio) radio.checked = true;
@@ -603,6 +607,7 @@ function openModal(id) {
     });
     document.getElementById('f-irreg-deadline').value = '';
     document.getElementById('f-irreg-content').value  = '';
+    document.getElementById('f-planDate').value        = '';
     document.getElementById('s-teishutsu').checked = true;
     STEP_KEYS.forEach(k=>document.getElementById('p-'+k).value='todo');
   }
@@ -631,6 +636,7 @@ async function saveCase() {
     note:    document.getElementById('f-note').value,
     irregDeadline: document.getElementById('f-irreg-deadline').value,
     irregContent:  document.getElementById('f-irreg-content').value.trim(),
+    planDate:      document.getElementById('f-planDate').value,
   };
   if (editingId) {
     const c = cases.find(x=>x.id===editingId);

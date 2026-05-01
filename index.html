@@ -252,7 +252,7 @@ tr:hover td { background:var(--surface2); }
         <thead><tr>
           <th>No</th><th>会社名</th><th>ステータス</th><th>営業担当</th><th>先方担当</th>
           <th>受講日程</th><th>会場</th><th>人数</th><th>発注書</th><th>労務士</th>
-          <th>管轄労働局</th><th>計画届提出</th><th>申請代行契約書</th><th>申請代行請求書</th><th>計画届受理</th><th>操作</th>
+          <th>管轄労働局</th><th>計画届提出</th><th>申請代行請求書</th><th>申請代行契約書</th><th>計画届受理</th><th>操作</th>
         </tr></thead>
         <tbody id="table-body"></tbody>
       </table></div>
@@ -327,8 +327,8 @@ tr:hover td { background:var(--surface2); }
           <div class="step-form-item"><div class="step-form-label">労務士代行</div><select class="step-form-select" id="p-lawyer"><option value="todo">— 未設定</option><option value="done">有</option><option value="na">無/対応不要</option></select></div>
           <div class="step-form-item"><div class="step-form-label">計画届提出</div><select class="step-form-select" id="p-plan"><option value="todo">— 未</option><option value="done">✓ 提出済</option><option value="na">N/A</option></select></div>
           <div class="step-form-item"><div class="step-form-label">計画届 提出日</div><input class="step-form-select" id="f-planDate" type="date" style="padding:5px 7px;"></div>
-          <div class="step-form-item"><div class="step-form-label">申請代行契約書</div><select class="step-form-select" id="p-contractDoc"><option value="todo">— 未</option><option value="pending">… 対応中</option><option value="done">✓ 完了</option><option value="na">N/A</option></select></div>
           <div class="step-form-item"><div class="step-form-label">申請代行請求書</div><select class="step-form-select" id="p-contractInv"><option value="todo">— 未</option><option value="pending">… 対応中</option><option value="done">✓ 完了</option><option value="na">N/A</option></select></div>
+          <div class="step-form-item"><div class="step-form-label">申請代行契約書</div><select class="step-form-select" id="p-contractDoc"><option value="todo">— 未</option><option value="pending">… 対応中</option><option value="done">✓ 完了</option><option value="na">N/A</option></select></div>
           <div class="step-form-item"><div class="step-form-label">計画届受理</div><select class="step-form-select" id="p-approval"><option value="todo">— 未</option><option value="done">✓ 受理済</option><option value="na">N/A</option></select></div>
         </div>
       </div>
@@ -382,8 +382,8 @@ tr:hover td { background:var(--surface2); }
 
 <script>
 const GAS_URL='https://script.google.com/macros/s/AKfycbw3KlXA1AWClIezkHc4h-Oityp713YOJZzeFJsIutYgkjfe17nS7U1yiAHsPvRjqoGt/exec';
-const STEP_KEYS=['date','people','order','lawyer','plan','contractDoc','contractInv','approval'];
-const STEP_LABELS=['受講日確定','人数確定','発注書受領','労務士代行','計画届提出','申請代行契約書','申請代行請求書','計画届受理'];
+const STEP_KEYS=['date','people','order','lawyer','plan','contractInv','contractDoc','approval'];
+const STEP_LABELS=['受講日確定','人数確定','発注書受領','労務士代行','計画届提出','申請代行請求書','申請代行契約書','計画届受理'];
 const APPLY_KEYS=['form81','docreq','docsubmit','notify'];
 const APPLY_LABELS=['様式8-1号の共有','必要書類の提出依頼','申請書類の提出','支給決定通知書の受取'];
 
@@ -528,7 +528,7 @@ function renderPlan(){
     <td style="font-size:12px;">${esc(c.date||'―')}</td><td>${esc(c.venue||'―')}</td><td>${esc(c.people||'―')}</td>
     <td>${cellStep(c.steps.order)}</td><td>${cellStep(c.steps.lawyer,'lawyer')}</td>
     <td>${esc(c.bureau||'―')}</td><td>${cellStep(c.steps.plan)}</td>
-    <td>${cellStep(c.steps.contractDoc)}</td><td>${cellStep(c.steps.contractInv)}</td><td>${cellStep(c.steps.approval)}</td>
+    <td>${cellStep(c.steps.contractInv)}</td><td>${cellStep(c.steps.contractDoc)}</td><td>${cellStep(c.steps.approval)}</td>
     <td><div style="display:flex;gap:4px;"><button class="icon-btn" onclick="openModal(${c.id})">✏️</button><button class="icon-btn danger" onclick="confirmDelete(${c.id})">🗑️</button></div></td>
   </tr>`).join(''):`<tr><td colspan="16">${emptyState()}</td></tr>`;
 }
@@ -638,8 +638,8 @@ async function deleteCase(id){
 }
 
 function exportCSV(){
-  const header=['No','会社名','ステータス','営業担当','先方担当','受講日程','会場','人数','発注書受領','労務士代行','管轄労働局','計画届提出','計画届提出日','申請代行契約書','申請代行請求書','計画届受理','様式8-1号共有','必要書類提出依頼','申請書類提出','支給決定通知書受取','備考','イレギュラー期限','イレギュラー内容'];
-  const rows=cases.map(c=>[c.no,c.company,c.status,c.sales,c.contact,c.date,c.venue,c.people,c.steps.order,c.steps.lawyer,c.bureau,c.steps.plan,c.planDate||'',c.steps.contractDoc,c.steps.contractInv,c.steps.approval,c.apply.form81,c.apply.docreq,c.apply.docsubmit,c.apply.notify,c.note,c.irregDeadline||'',c.irregContent||'']);
+  const header=['No','会社名','ステータス','営業担当','先方担当','受講日程','会場','人数','発注書受領','労務士代行','管轄労働局','計画届提出','計画届提出日','申請代行請求書','申請代行契約書','計画届受理','様式8-1号共有','必要書類提出依頼','申請書類提出','支給決定通知書受取','備考','イレギュラー期限','イレギュラー内容'];
+  const rows=cases.map(c=>[c.no,c.company,c.status,c.sales,c.contact,c.date,c.venue,c.people,c.steps.order,c.steps.lawyer,c.bureau,c.steps.plan,c.planDate||'',c.steps.contractInv,c.steps.contractDoc,c.steps.approval,c.apply.form81,c.apply.docreq,c.apply.docsubmit,c.apply.notify,c.note,c.irregDeadline||'',c.irregContent||'']);
   const csv='\uFEFF'+[header,...rows].map(r=>r.map(v=>`"${String(v||'').replace(/"/g,'""')}"`).join(',')).join('\n');
   const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
   a.download=`AI研修_案件管理_${new Date().toISOString().slice(0,10)}.csv`;a.click();

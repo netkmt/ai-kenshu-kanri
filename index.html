@@ -15,91 +15,84 @@
   --green-bg:#e1f5ee; --green-text:#0f6e56; --green-border:#1d9e75;
   --red-bg:#fcebeb; --red-text:#a32d2d; --red-border:#e24b4a;
   --gray-bg:#f1efe8; --gray-text:#5f5e5a; --gray-border:#888780;
+  --purple-bg:#eeedfe; --purple-text:#3c3489; --purple-border:#7f77dd;
   --accent:#185FA5;
   --shadow:0 1px 3px rgba(0,0,0,0.08),0 1px 2px rgba(0,0,0,0.05);
   --shadow-md:0 4px 12px rgba(0,0,0,0.1),0 2px 4px rgba(0,0,0,0.06);
   --radius:10px; --radius-sm:6px;
 }
 body { font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; font-size:14px; line-height:1.6; }
-
-/* Loading */
 #loading-screen { position:fixed; inset:0; background:var(--bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; z-index:999; }
 .spinner { width:38px; height:38px; border:3px solid var(--border); border-top-color:var(--accent); border-radius:50%; animation:spin 0.8s linear infinite; }
 @keyframes spin { to{transform:rotate(360deg)} }
 .loading-text { font-size:13px; color:var(--text2); }
-
-/* Topbar */
 .topbar { background:var(--surface); border-bottom:1px solid var(--border); padding:0 28px; display:flex; align-items:center; justify-content:space-between; height:56px; position:sticky; top:0; z-index:100; box-shadow:var(--shadow); }
 .topbar-left { display:flex; align-items:center; gap:12px; }
 .logo-mark { width:32px; height:32px; border-radius:8px; background:var(--accent); display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:13px; }
-.app-title { font-size:15px; font-weight:600; color:var(--text); }
+.app-title { font-size:15px; font-weight:600; }
 .topbar-right { display:flex; align-items:center; gap:8px; }
-
-/* Sync indicator */
 .sync-wrap { display:flex; align-items:center; gap:6px; font-size:12px; color:var(--text2); padding:4px 10px; border-radius:20px; border:1px solid var(--border-strong); background:var(--surface); }
-.sync-dot { width:8px; height:8px; border-radius:50%; background:var(--green-border); transition:background 0.3s; }
+.sync-dot { width:8px; height:8px; border-radius:50%; background:var(--green-border); }
 .sync-dot.syncing { background:var(--amber-border); animation:pulse 1s ease-in-out infinite; }
 .sync-dot.error { background:var(--red-border); }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-
-.btn-primary { background:var(--accent); color:white; border:none; padding:7px 16px; border-radius:var(--radius-sm); font-size:13px; font-weight:500; cursor:pointer; display:flex; align-items:center; gap:6px; transition:opacity 0.15s; }
-.btn-primary:hover { opacity:0.88; }
-.btn-primary:disabled { opacity:0.5; cursor:not-allowed; }
-.btn-ghost { background:transparent; color:var(--text2); border:1px solid var(--border-strong); padding:6px 14px; border-radius:var(--radius-sm); font-size:13px; cursor:pointer; display:flex; align-items:center; gap:6px; transition:background 0.15s; }
+.btn-primary { background:var(--accent); color:white; border:none; padding:7px 16px; border-radius:var(--radius-sm); font-size:13px; font-weight:500; cursor:pointer; display:flex; align-items:center; gap:6px; transition:opacity .15s; }
+.btn-primary:hover { opacity:.88; }
+.btn-primary:disabled { opacity:.5; cursor:not-allowed; }
+.btn-ghost { background:transparent; color:var(--text2); border:1px solid var(--border-strong); padding:6px 14px; border-radius:var(--radius-sm); font-size:13px; cursor:pointer; display:flex; align-items:center; gap:6px; transition:background .15s; }
 .btn-ghost:hover { background:var(--surface2); }
 
-/* Main */
-.main { padding:24px 28px; max-width:1280px; margin:0 auto; }
+/* Phase tabs */
+.phase-tabs { display:flex; border-bottom:2px solid var(--border); padding:0 28px; background:var(--surface); position:sticky; top:56px; z-index:99; }
+.phase-tab { padding:12px 22px; font-size:13px; font-weight:600; color:var(--text2); cursor:pointer; border:none; background:none; border-bottom:3px solid transparent; margin-bottom:-2px; transition:all .15s; display:flex; align-items:center; gap:8px; }
+.phase-tab:hover { color:var(--text); }
+.phase-tab.active { color:var(--accent); border-bottom-color:var(--accent); }
+.phase-tab.apply-tab.active { color:var(--purple-text); border-bottom-color:var(--purple-border); }
+.phase-badge { font-size:11px; font-weight:700; padding:2px 7px; border-radius:20px; background:var(--blue-bg); color:var(--blue-text); }
+.phase-tab.apply-tab .phase-badge { background:var(--purple-bg); color:var(--purple-text); }
 
-/* Summary */
+.main { padding:24px 28px; max-width:1280px; margin:0 auto; }
 .summary-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:20px; }
 .summary-card { background:var(--surface); border-radius:var(--radius); padding:16px 20px; border:1px solid var(--border); box-shadow:var(--shadow); }
-.summary-label { font-size:11px; color:var(--text2); font-weight:500; letter-spacing:0.3px; margin-bottom:4px; }
-.summary-value { font-size:26px; font-weight:700; color:var(--text); line-height:1; }
+.summary-label { font-size:11px; color:var(--text2); font-weight:500; margin-bottom:4px; }
+.summary-value { font-size:26px; font-weight:700; line-height:1; }
 .summary-sub { font-size:11px; color:var(--text3); margin-top:4px; }
-
-/* Toolbar */
 .toolbar { display:flex; align-items:center; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
 .search-wrap { position:relative; flex:1; min-width:200px; }
 .search-icon { position:absolute; left:10px; top:50%; transform:translateY(-50%); color:var(--text3); font-size:14px; pointer-events:none; }
 .search-input { width:100%; padding:8px 12px 8px 34px; border:1px solid var(--border-strong); border-radius:var(--radius-sm); font-size:13px; background:var(--surface); color:var(--text); outline:none; font-family:inherit; }
 .search-input:focus { border-color:var(--accent); }
 .filter-group { display:flex; gap:6px; flex-wrap:wrap; }
-.filter-chip { padding:6px 14px; border-radius:20px; font-size:12px; font-weight:500; border:1px solid var(--border-strong); background:var(--surface); color:var(--text2); cursor:pointer; transition:all 0.15s; white-space:nowrap; }
+.filter-chip { padding:6px 14px; border-radius:20px; font-size:12px; font-weight:500; border:1px solid var(--border-strong); background:var(--surface); color:var(--text2); cursor:pointer; transition:all .15s; white-space:nowrap; }
 .filter-chip:hover { background:var(--surface2); }
 .filter-chip.active { background:var(--accent); color:white; border-color:var(--accent); }
 .sort-select { padding:7px 12px; border:1px solid var(--border-strong); border-radius:var(--radius-sm); font-size:13px; background:var(--surface); color:var(--text); cursor:pointer; outline:none; font-family:inherit; }
 .view-toggle { display:flex; border:1px solid var(--border-strong); border-radius:var(--radius-sm); overflow:hidden; }
 .view-btn { padding:7px 12px; font-size:13px; background:var(--surface); color:var(--text2); border:none; cursor:pointer; }
 .view-btn.active { background:var(--accent); color:white; }
-
-/* Legend */
 .legend { display:flex; gap:16px; margin-bottom:16px; flex-wrap:wrap; }
 .legend-item { display:flex; align-items:center; gap:6px; font-size:12px; color:var(--text2); }
 .legend-dot { width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:700; }
-
-/* Cards */
 .cards-grid { display:grid; grid-template-columns:1fr; gap:12px; }
-.case-card { background:var(--surface); border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--shadow); overflow:hidden; transition:box-shadow 0.2s; }
+.case-card { background:var(--surface); border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--shadow); overflow:hidden; transition:box-shadow .2s; }
 .case-card:hover { box-shadow:var(--shadow-md); }
 .case-card-header { display:flex; align-items:center; gap:12px; padding:12px 16px; background:var(--surface2); border-bottom:1px solid var(--border); flex-wrap:wrap; }
 .case-no { font-size:11px; color:var(--text3); min-width:28px; font-weight:500; }
-.company-name { font-size:15px; font-weight:600; color:var(--text); flex:1; }
+.company-name { font-size:15px; font-weight:600; flex:1; }
 .status-badge { font-size:11px; font-weight:600; padding:3px 10px; border-radius:20px; white-space:nowrap; }
 .badge-teishutsu { background:var(--blue-bg); color:var(--blue-text); }
 .badge-tetsuzuki { background:var(--amber-bg); color:var(--amber-text); }
 .badge-hokan { background:var(--green-bg); color:var(--green-text); }
 .badge-other { background:var(--gray-bg); color:var(--gray-text); }
-.irregular-badge { display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:600; padding:3px 9px; border-radius:20px; background:var(--red-bg); color:var(--red-text); border:1px solid var(--red-border); white-space:nowrap; cursor:pointer; transition:opacity 0.15s; }
-.irregular-badge:hover { opacity:0.8; }
+.irregular-badge { display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:600; padding:3px 9px; border-radius:20px; background:var(--red-bg); color:var(--red-text); border:1px solid var(--red-border); white-space:nowrap; cursor:pointer; }
 .irregular-badge.overdue { background:var(--red-border); color:#fff; animation:pulse 1.6s ease-in-out infinite; }
 .card-actions { display:flex; gap:4px; margin-left:auto; }
-.icon-btn { width:28px; height:28px; border-radius:6px; display:flex; align-items:center; justify-content:center; border:none; background:transparent; cursor:pointer; color:var(--text3); font-size:14px; transition:all 0.15s; }
+.icon-btn { width:28px; height:28px; border-radius:6px; display:flex; align-items:center; justify-content:center; border:none; background:transparent; cursor:pointer; color:var(--text3); font-size:14px; transition:all .15s; }
 .icon-btn:hover { background:var(--border); color:var(--text); }
 .icon-btn.danger:hover { background:var(--red-bg); color:var(--red-text); }
 .case-info { display:grid; grid-template-columns:repeat(5,1fr); padding:10px 16px; border-bottom:1px solid var(--border); }
-.info-label { font-size:10px; color:var(--text3); font-weight:500; letter-spacing:0.2px; margin-bottom:2px; }
-.info-value { font-size:13px; color:var(--text); font-weight:500; }
+.info-label { font-size:10px; color:var(--text3); font-weight:500; margin-bottom:2px; }
+.info-value { font-size:13px; font-weight:500; }
 .progress-area { padding:12px 16px; }
 .steps-row { display:flex; align-items:flex-start; position:relative; }
 .steps-row::before { content:''; position:absolute; left:14px; right:14px; top:12px; height:1px; background:var(--border); }
@@ -111,13 +104,13 @@ body { font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif; backgr
 .step-dot.na { background:var(--gray-bg); border-color:var(--border); color:var(--text3); font-size:8px; }
 .step-label { font-size:10px; color:var(--text2); text-align:center; line-height:1.3; white-space:nowrap; }
 .note-bar { padding:6px 16px 10px; font-size:12px; color:var(--text2); border-top:1px solid var(--border); display:flex; align-items:center; gap:6px; }
-
-/* Table */
+.case-card.apply-card { border-left:3px solid var(--purple-border); }
+.case-card.apply-card .case-card-header { background:var(--purple-bg); }
 .table-wrap { overflow-x:auto; border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--shadow); }
 table { width:100%; border-collapse:collapse; background:var(--surface); font-size:13px; }
 thead { background:var(--surface2); }
 th { padding:10px 14px; text-align:left; font-size:11px; font-weight:600; color:var(--text2); border-bottom:1px solid var(--border); white-space:nowrap; }
-td { padding:10px 14px; border-bottom:1px solid var(--border); color:var(--text); vertical-align:middle; }
+td { padding:10px 14px; border-bottom:1px solid var(--border); vertical-align:middle; }
 tr:last-child td { border-bottom:none; }
 tr:hover td { background:var(--surface2); }
 .cell-step { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:10px; font-weight:700; }
@@ -125,11 +118,9 @@ tr:hover td { background:var(--surface2); }
 .cell-step.pending { background:var(--amber-bg); color:var(--amber-text); }
 .cell-step.todo { background:var(--surface2); color:var(--text3); border:1px solid var(--border); }
 .cell-step.na { background:var(--gray-bg); color:var(--text3); font-size:8px; }
-
-/* Modal */
 .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:200; align-items:center; justify-content:center; }
 .modal-overlay.open { display:flex; }
-.modal { background:var(--surface); border-radius:14px; width:640px; max-width:95vw; max-height:90vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,0.2); animation:modalIn 0.18s ease; }
+.modal { background:var(--surface); border-radius:14px; width:660px; max-width:95vw; max-height:90vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,0.2); animation:modalIn .18s ease; }
 @keyframes modalIn { from{transform:translateY(12px);opacity:0} to{transform:translateY(0);opacity:1} }
 .modal-header { display:flex; align-items:center; justify-content:space-between; padding:18px 22px; border-bottom:1px solid var(--border); }
 .modal-title { font-size:16px; font-weight:600; }
@@ -138,7 +129,7 @@ tr:hover td { background:var(--surface2); }
 .modal-body { padding:22px; }
 .modal-footer { padding:16px 22px; border-top:1px solid var(--border); display:flex; justify-content:flex-end; gap:8px; }
 .form-section { margin-bottom:20px; }
-.form-section-title { font-size:11px; font-weight:600; color:var(--text2); letter-spacing:0.5px; text-transform:uppercase; margin-bottom:10px; padding-bottom:6px; border-bottom:1px solid var(--border); }
+.form-section-title { font-size:11px; font-weight:600; color:var(--text2); letter-spacing:.5px; text-transform:uppercase; margin-bottom:10px; padding-bottom:6px; border-bottom:1px solid var(--border); }
 .form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:10px; }
 .form-row.single { grid-template-columns:1fr; }
 .form-row.three { grid-template-columns:1fr 1fr 1fr; }
@@ -148,7 +139,7 @@ tr:hover td { background:var(--surface2); }
 .form-input:focus,.form-select:focus,.form-textarea:focus { border-color:var(--accent); }
 .form-textarea { min-height:70px; resize:vertical; }
 .status-option { display:none; }
-.status-option+label { display:flex; align-items:center; justify-content:center; padding:8px; border-radius:var(--radius-sm); border:1.5px solid var(--border-strong); cursor:pointer; font-size:12px; font-weight:500; text-align:center; line-height:1.3; }
+.status-option+label { display:flex; align-items:center; justify-content:center; padding:8px; border-radius:var(--radius-sm); border:1.5px solid var(--border-strong); cursor:pointer; font-size:12px; font-weight:500; text-align:center; }
 .status-option:checked+label { border-width:2px; }
 #s-teishutsu:checked+label { background:var(--blue-bg); border-color:var(--blue-border); color:var(--blue-text); }
 #s-tetsuzuki:checked+label { background:var(--amber-bg); border-color:var(--amber-border); color:var(--amber-text); }
@@ -158,51 +149,44 @@ tr:hover td { background:var(--surface2); }
 .step-form-item { display:flex; flex-direction:column; gap:4px; }
 .step-form-label { font-size:11px; color:var(--text2); font-weight:500; }
 .step-form-select { padding:6px 8px; border:1px solid var(--border-strong); border-radius:var(--radius-sm); font-size:12px; background:var(--surface); color:var(--text); outline:none; font-family:inherit; }
+.apply-form-section { background:var(--purple-bg); border:1.5px solid var(--purple-border); border-radius:var(--radius-sm); overflow:hidden; margin-bottom:20px; }
+.apply-form-header { padding:8px 12px; font-size:11px; font-weight:600; color:var(--purple-text); border-bottom:1px solid var(--purple-border); }
+.apply-form-body { padding:12px; }
 .irregular-section { border:1.5px solid var(--red-border); border-radius:var(--radius-sm); overflow:hidden; }
 .irregular-section-header { background:var(--red-bg); padding:8px 12px; font-size:11px; font-weight:600; color:var(--red-text); }
 .irregular-section-body { padding:12px; display:flex; flex-direction:column; gap:10px; }
-
-/* Confirm */
-.confirm-modal { background:var(--surface); border-radius:12px; width:380px; max-width:95vw; padding:28px; box-shadow:0 20px 60px rgba(0,0,0,0.2); text-align:center; animation:modalIn 0.18s ease; }
+.confirm-modal { background:var(--surface); border-radius:12px; width:380px; max-width:95vw; padding:28px; box-shadow:0 20px 60px rgba(0,0,0,0.2); text-align:center; animation:modalIn .18s ease; }
 .confirm-icon { font-size:36px; margin-bottom:12px; }
 .confirm-title { font-size:16px; font-weight:600; margin-bottom:8px; }
 .confirm-desc { font-size:13px; color:var(--text2); margin-bottom:20px; }
 .confirm-actions { display:flex; gap:8px; justify-content:center; }
-.btn-danger { background:var(--red-bg); color:var(--red-text); border:1px solid var(--red-border); padding:8px 20px; border-radius:var(--radius-sm); font-size:13px; font-weight:500; cursor:pointer; transition:opacity 0.15s; }
-.btn-danger:hover { opacity:0.8; }
-
-/* Toast */
-.toast { position:fixed; bottom:24px; right:24px; background:var(--text); color:white; padding:10px 16px; border-radius:8px; font-size:13px; z-index:300; opacity:0; transform:translateY(10px); transition:all 0.25s; pointer-events:none; }
+.btn-danger { background:var(--red-bg); color:var(--red-text); border:1px solid var(--red-border); padding:8px 20px; border-radius:var(--radius-sm); font-size:13px; font-weight:500; cursor:pointer; }
+.btn-danger:hover { opacity:.8; }
+.toast { position:fixed; bottom:24px; right:24px; background:var(--text); color:white; padding:10px 16px; border-radius:8px; font-size:13px; z-index:300; opacity:0; transform:translateY(10px); transition:all .25s; pointer-events:none; }
 .toast.show { opacity:1; transform:translateY(0); }
 .toast.success { background:var(--green-border); }
 .toast.error { background:var(--red-border); }
-
-/* Empty */
 .empty-state { text-align:center; padding:60px 20px; color:var(--text2); }
 .empty-icon { font-size:40px; margin-bottom:12px; }
 .empty-title { font-size:16px; font-weight:500; margin-bottom:6px; color:var(--text); }
 .empty-desc { font-size:13px; }
-
 @media(max-width:768px){
   .summary-grid{grid-template-columns:repeat(2,1fr);}
   .case-info{grid-template-columns:repeat(2,1fr);}
   .form-row,.form-row.three{grid-template-columns:1fr;}
   .step-form-grid{grid-template-columns:repeat(2,1fr);}
-  .main{padding:16px;}
-  .topbar{padding:0 16px;}
+  .main,.topbar,.phase-tabs{padding-left:16px;padding-right:16px;}
   .steps-row::before{display:none;}
 }
 </style>
 </head>
 <body>
 
-<!-- Loading -->
 <div id="loading-screen">
   <div class="spinner"></div>
   <div class="loading-text" id="loading-text">スプレッドシートからデータを読み込み中...</div>
 </div>
 
-<!-- Topbar -->
 <div class="topbar">
   <div class="topbar-left">
     <div class="logo-mark">AI</div>
@@ -215,68 +199,91 @@ tr:hover td { background:var(--surface2); }
     </div>
     <span id="today-label" style="font-size:12px;color:var(--text2);"></span>
     <button class="btn-ghost" onclick="exportCSV()">⬇ CSV出力</button>
-    <button class="btn-primary" onclick="openModal()">＋ 新規案件</button>
+    <button class="btn-primary" id="add-btn" onclick="openModal()">＋ 新規案件</button>
   </div>
+</div>
+
+<div class="phase-tabs">
+  <button class="phase-tab active" id="tab-plan" onclick="setPhase('plan')">
+    📋 計画フェーズ <span class="phase-badge" id="badge-plan">0</span>
+  </button>
+  <button class="phase-tab apply-tab" id="tab-apply" onclick="setPhase('apply')">
+    📨 申請フェーズ <span class="phase-badge" id="badge-apply">0</span>
+  </button>
 </div>
 
 <div class="main">
-  <!-- Summary -->
-  <div class="summary-grid">
-    <div class="summary-card"><div class="summary-label">進行中 総案件数</div><div class="summary-value" id="stat-total">0</div><div class="summary-sub">件</div></div>
-    <div class="summary-card"><div class="summary-label">計画届提出済</div><div class="summary-value" id="stat-teishutsu" style="color:var(--blue-text)">0</div><div class="summary-sub">件</div></div>
-    <div class="summary-card"><div class="summary-label">手続き中</div><div class="summary-value" id="stat-tetsuzuki" style="color:var(--amber-text)">0</div><div class="summary-sub">件</div></div>
-    <div class="summary-card"><div class="summary-label">受講予定 総人数</div><div class="summary-value" id="stat-people" style="color:var(--accent)">0</div><div class="summary-sub">名</div></div>
-  </div>
 
-  <!-- Toolbar -->
-  <div class="toolbar">
-    <div class="search-wrap">
-      <span class="search-icon">🔍</span>
-      <input class="search-input" type="text" id="search-input" placeholder="会社名・担当者で検索..." oninput="render()">
+  <!-- 計画フェーズ -->
+  <div id="phase-plan">
+    <div class="summary-grid">
+      <div class="summary-card"><div class="summary-label">総案件数</div><div class="summary-value" id="stat-total">0</div><div class="summary-sub">件</div></div>
+      <div class="summary-card"><div class="summary-label">計画届提出済</div><div class="summary-value" id="stat-teishutsu" style="color:var(--blue-text)">0</div><div class="summary-sub">件</div></div>
+      <div class="summary-card"><div class="summary-label">手続き中</div><div class="summary-value" id="stat-tetsuzuki" style="color:var(--amber-text)">0</div><div class="summary-sub">件</div></div>
+      <div class="summary-card"><div class="summary-label">受講予定 総人数</div><div class="summary-value" id="stat-people" style="color:var(--accent)">0</div><div class="summary-sub">名</div></div>
     </div>
-    <div class="filter-group">
-      <button class="filter-chip active" onclick="setFilter('all',this)">すべて</button>
-      <button class="filter-chip" onclick="setFilter('計画届提出済',this)">計画届提出済</button>
-      <button class="filter-chip" onclick="setFilter('手続き中',this)">手続き中</button>
-      <button class="filter-chip" onclick="setFilter('完了',this)">完了</button>
-      <button class="filter-chip" onclick="setFilter('other',this)">その他</button>
+    <div class="toolbar">
+      <div class="search-wrap"><span class="search-icon">🔍</span><input class="search-input" type="text" id="search-input" placeholder="会社名・担当者で検索..." oninput="render()"></div>
+      <div class="filter-group">
+        <button class="filter-chip active" onclick="setFilter('all',this)">すべて</button>
+        <button class="filter-chip" onclick="setFilter('計画届提出済',this)">計画届提出済</button>
+        <button class="filter-chip" onclick="setFilter('手続き中',this)">手続き中</button>
+        <button class="filter-chip" onclick="setFilter('完了',this)">完了</button>
+        <button class="filter-chip" onclick="setFilter('other',this)">その他</button>
+      </div>
+      <select class="sort-select" id="sort-select" onchange="render()">
+        <option value="no">No順</option><option value="date">受講日順</option>
+        <option value="company">会社名順</option><option value="people">人数順</option>
+      </select>
+      <div class="view-toggle">
+        <button class="view-btn active" id="view-card" onclick="setView('card')">☰ カード</button>
+        <button class="view-btn" id="view-table" onclick="setView('table')">⊞ テーブル</button>
+      </div>
     </div>
-    <select class="sort-select" id="sort-select" onchange="render()">
-      <option value="no">No順</option>
-      <option value="date">受講日順</option>
-      <option value="company">会社名順</option>
-      <option value="people">人数順</option>
-    </select>
-    <div class="view-toggle">
-      <button class="view-btn active" id="view-card" onclick="setView('card')">☰ カード</button>
-      <button class="view-btn" id="view-table" onclick="setView('table')">⊞ テーブル</button>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--green-bg);border:1.5px solid var(--green-border);color:var(--green-text);">✓</div>完了 / 済</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--amber-bg);border:1.5px solid var(--amber-border);color:var(--amber-text);">…</div>対応中</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--surface2);border:1.5px solid var(--border-strong);color:var(--text3);">—</div>未</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--gray-bg);border:1.5px solid var(--border);color:var(--text3);font-size:8px;">N/A</div>対応不要</div>
     </div>
-  </div>
-
-  <!-- Legend -->
-  <div class="legend">
-    <div class="legend-item"><div class="legend-dot" style="background:var(--green-bg);border:1.5px solid var(--green-border);color:var(--green-text);">✓</div>完了 / 済</div>
-    <div class="legend-item"><div class="legend-dot" style="background:var(--amber-bg);border:1.5px solid var(--amber-border);color:var(--amber-text);">…</div>対応中</div>
-    <div class="legend-item"><div class="legend-dot" style="background:var(--surface2);border:1.5px solid var(--border-strong);color:var(--text3);">—</div>未</div>
-    <div class="legend-item"><div class="legend-dot" style="background:var(--gray-bg);border:1.5px solid var(--border);color:var(--text3);font-size:8px;">N/A</div>対応不要</div>
-  </div>
-
-  <div id="card-view" class="cards-grid"></div>
-  <div id="table-view" style="display:none;">
-    <div class="table-wrap">
-      <table>
+    <div id="card-view" class="cards-grid"></div>
+    <div id="table-view" style="display:none;">
+      <div class="table-wrap"><table>
         <thead><tr>
           <th>No</th><th>会社名</th><th>ステータス</th><th>営業担当</th><th>先方担当</th>
           <th>受講日程</th><th>会場</th><th>人数</th><th>発注書</th><th>労務士</th>
-          <th>管轄労働局</th><th>計画届</th><th>申請代行契約書</th><th>申請代行請求書</th><th>計画届受理</th><th>操作</th>
+          <th>管轄労働局</th><th>計画届提出</th><th>申請代行契約書</th><th>申請代行請求書</th><th>計画届受理</th><th>操作</th>
         </tr></thead>
         <tbody id="table-body"></tbody>
-      </table>
+      </table></div>
     </div>
   </div>
+
+  <!-- 申請フェーズ -->
+  <div id="phase-apply" style="display:none;">
+    <div class="summary-grid">
+      <div class="summary-card"><div class="summary-label">申請フェーズ 案件数</div><div class="summary-value" id="astat-total" style="color:var(--purple-text)">0</div><div class="summary-sub">件</div></div>
+      <div class="summary-card"><div class="summary-label">様式8-1号 共有済</div><div class="summary-value" id="astat-form" style="color:var(--green-text)">0</div><div class="summary-sub">件</div></div>
+      <div class="summary-card"><div class="summary-label">申請書類 提出済</div><div class="summary-value" id="astat-docs" style="color:var(--blue-text)">0</div><div class="summary-sub">件</div></div>
+      <div class="summary-card"><div class="summary-label">支給決定通知書 受取済</div><div class="summary-value" id="astat-done" style="color:var(--amber-text)">0</div><div class="summary-sub">件</div></div>
+    </div>
+    <div class="toolbar">
+      <div class="search-wrap"><span class="search-icon">🔍</span><input class="search-input" type="text" id="asearch-input" placeholder="会社名・担当者で検索..." oninput="renderApply()"></div>
+      <select class="sort-select" id="asort-select" onchange="renderApply()">
+        <option value="no">No順</option><option value="company">会社名順</option>
+      </select>
+    </div>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--green-bg);border:1.5px solid var(--green-border);color:var(--green-text);">✓</div>完了</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--amber-bg);border:1.5px solid var(--amber-border);color:var(--amber-text);">…</div>対応中</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--surface2);border:1.5px solid var(--border-strong);color:var(--text3);">—</div>未</div>
+    </div>
+    <div id="apply-cards" class="cards-grid"></div>
+  </div>
+
 </div>
 
-<!-- Edit Modal -->
+<!-- Modal -->
 <div class="modal-overlay" id="modal-overlay" onclick="closeModalOnBg(event)">
   <div class="modal">
     <div class="modal-header">
@@ -288,8 +295,7 @@ tr:hover td { background:var(--surface2); }
         <div class="form-section-title">基本情報</div>
         <div class="form-row">
           <div class="form-group"><label class="form-label">受講会社名 *</label><input class="form-input" id="f-company" type="text" placeholder="例：株式会社○○"></div>
-          <div class="form-group">
-            <label class="form-label">ステータス</label>
+          <div class="form-group"><label class="form-label">ステータス</label>
             <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:6px;">
               <input type="radio" class="status-option" name="f-status" id="s-teishutsu" value="計画届提出済" checked><label for="s-teishutsu">計画届提出済</label>
               <input type="radio" class="status-option" name="f-status" id="s-tetsuzuki" value="手続き中"><label for="s-tetsuzuki">手続き中</label>
@@ -299,32 +305,46 @@ tr:hover td { background:var(--surface2); }
           </div>
         </div>
         <div class="form-row three">
-          <div class="form-group"><label class="form-label">営業担当</label><input class="form-input" id="f-sales" type="text" placeholder="例：萩島"></div>
-          <div class="form-group"><label class="form-label">先方担当</label><input class="form-input" id="f-contact" type="text" placeholder="例：関"></div>
-          <div class="form-group"><label class="form-label">会場</label><input class="form-input" id="f-venue" type="text" placeholder="例：東京"></div>
+          <div class="form-group"><label class="form-label">営業担当</label><input class="form-input" id="f-sales" type="text"></div>
+          <div class="form-group"><label class="form-label">先方担当</label><input class="form-input" id="f-contact" type="text"></div>
+          <div class="form-group"><label class="form-label">会場</label><input class="form-input" id="f-venue" type="text"></div>
         </div>
         <div class="form-row">
           <div class="form-group"><label class="form-label">受講日程</label><input class="form-input" id="f-date" type="text" placeholder="例：2026/06/03・2026/06/17"></div>
           <div class="form-group"><label class="form-label">受講人数</label><input class="form-input" id="f-people" type="text" placeholder="例：11名"></div>
         </div>
         <div class="form-row single">
-          <div class="form-group"><label class="form-label">管轄労働局</label><input class="form-input" id="f-bureau" type="text" placeholder="例：神奈川"></div>
+          <div class="form-group"><label class="form-label">管轄労働局</label><input class="form-input" id="f-bureau" type="text"></div>
         </div>
       </div>
+
       <div class="form-section">
-        <div class="form-section-title">進捗ステータス</div>
+        <div class="form-section-title">計画フェーズ 進捗</div>
         <div class="step-form-grid">
-          <div class="step-form-item"><div class="step-form-label">受講日確定</div><select class="step-form-select" id="p-date"><option value="todo">— 未</option><option value="done">✓ 済</option><option value="na">N/A 対応不要</option></select></div>
-          <div class="step-form-item"><div class="step-form-label">受講人数確定</div><select class="step-form-select" id="p-people"><option value="todo">— 未</option><option value="done">✓ 済</option><option value="na">N/A 対応不要</option></select></div>
-          <div class="step-form-item"><div class="step-form-label">発注書受領</div><select class="step-form-select" id="p-order"><option value="todo">— 未</option><option value="done">✓ 済</option><option value="na">N/A 対応不要</option></select></div>
-          <div class="step-form-item"><div class="step-form-label">労務士代行</div><select class="step-form-select" id="p-lawyer"><option value="todo">— 未設定</option><option value="done">有</option><option value="na">無 / 対応不要</option></select></div>
-          <div class="step-form-item"><div class="step-form-label">計画届提出</div><select class="step-form-select" id="p-plan"><option value="todo">— 未</option><option value="done">✓ 提出済</option><option value="na">N/A 対応不要</option></select></div>
+          <div class="step-form-item"><div class="step-form-label">受講日確定</div><select class="step-form-select" id="p-date"><option value="todo">— 未</option><option value="done">✓ 済</option><option value="na">N/A</option></select></div>
+          <div class="step-form-item"><div class="step-form-label">受講人数確定</div><select class="step-form-select" id="p-people"><option value="todo">— 未</option><option value="done">✓ 済</option><option value="na">N/A</option></select></div>
+          <div class="step-form-item"><div class="step-form-label">発注書受領</div><select class="step-form-select" id="p-order"><option value="todo">— 未</option><option value="done">✓ 済</option><option value="na">N/A</option></select></div>
+          <div class="step-form-item"><div class="step-form-label">労務士代行</div><select class="step-form-select" id="p-lawyer"><option value="todo">— 未設定</option><option value="done">有</option><option value="na">無/対応不要</option></select></div>
+          <div class="step-form-item"><div class="step-form-label">計画届提出</div><select class="step-form-select" id="p-plan"><option value="todo">— 未</option><option value="done">✓ 提出済</option><option value="na">N/A</option></select></div>
           <div class="step-form-item"><div class="step-form-label">計画届 提出日</div><input class="step-form-select" id="f-planDate" type="date" style="padding:5px 7px;"></div>
-          <div class="step-form-item"><div class="step-form-label">申請代行契約書</div><select class="step-form-select" id="p-contractDoc"><option value="todo">— 未</option><option value="pending">… 対応中</option><option value="done">✓ 完了</option><option value="na">N/A 対応不要</option></select></div>
-          <div class="step-form-item"><div class="step-form-label">申請代行請求書</div><select class="step-form-select" id="p-contractInv"><option value="todo">— 未</option><option value="pending">… 対応中</option><option value="done">✓ 完了</option><option value="na">N/A 対応不要</option></select></div>
-          <div class="step-form-item"><div class="step-form-label">計画届受理</div><select class="step-form-select" id="p-approval"><option value="todo">— 未</option><option value="done">✓ 受理済</option><option value="na">N/A 対応不要</option></select></div>
+          <div class="step-form-item"><div class="step-form-label">申請代行契約書</div><select class="step-form-select" id="p-contractDoc"><option value="todo">— 未</option><option value="pending">… 対応中</option><option value="done">✓ 完了</option><option value="na">N/A</option></select></div>
+          <div class="step-form-item"><div class="step-form-label">申請代行請求書</div><select class="step-form-select" id="p-contractInv"><option value="todo">— 未</option><option value="pending">… 対応中</option><option value="done">✓ 完了</option><option value="na">N/A</option></select></div>
+          <div class="step-form-item"><div class="step-form-label">計画届受理</div><select class="step-form-select" id="p-approval"><option value="todo">— 未</option><option value="done">✓ 受理済</option><option value="na">N/A</option></select></div>
         </div>
       </div>
+
+      <div class="apply-form-section">
+        <div class="apply-form-header">📨 申請フェーズ 進捗（計画届受理済後に入力）</div>
+        <div class="apply-form-body">
+          <div class="step-form-grid">
+            <div class="step-form-item"><div class="step-form-label">様式8-1号の共有</div><select class="step-form-select" id="a-form81"><option value="todo">— 未</option><option value="pending">… 対応中</option><option value="done">✓ 完了</option></select></div>
+            <div class="step-form-item"><div class="step-form-label">必要書類の提出依頼</div><select class="step-form-select" id="a-docreq"><option value="todo">— 未</option><option value="pending">… 対応中</option><option value="done">✓ 完了</option></select></div>
+            <div class="step-form-item"><div class="step-form-label">申請書類の提出</div><select class="step-form-select" id="a-docsubmit"><option value="todo">— 未</option><option value="pending">… 対応中</option><option value="done">✓ 完了</option></select></div>
+            <div class="step-form-item"><div class="step-form-label">支給決定通知書の受取</div><select class="step-form-select" id="a-notify"><option value="todo">— 未</option><option value="pending">… 対応中</option><option value="done">✓ 完了</option></select></div>
+          </div>
+        </div>
+      </div>
+
       <div class="form-section">
         <div class="form-section-title">備考</div>
         <div class="form-row single"><div class="form-group"><textarea class="form-textarea" id="f-note" placeholder="特記事項があれば入力してください..."></textarea></div></div>
@@ -347,7 +367,6 @@ tr:hover td { background:var(--surface2); }
   </div>
 </div>
 
-<!-- Confirm -->
 <div class="modal-overlay" id="confirm-overlay" onclick="closeConfirm(event)">
   <div class="confirm-modal">
     <div class="confirm-icon">🗑️</div>
@@ -359,162 +378,125 @@ tr:hover td { background:var(--surface2); }
     </div>
   </div>
 </div>
-
 <div class="toast" id="toast"></div>
 
 <script>
-// ═══════════════════════════════════════════
-//  設定 — GAS URL はここだけ変更すればOK
-// ═══════════════════════════════════════════
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbw3KlXA1AWClIezkHc4h-Oityp713YOJZzeFJsIutYgkjfe17nS7U1yiAHsPvRjqoGt/exec';
+const GAS_URL='https://script.google.com/macros/s/AKfycbw3KlXA1AWClIezkHc4h-Oityp713YOJZzeFJsIutYgkjfe17nS7U1yiAHsPvRjqoGt/exec';
+const STEP_KEYS=['date','people','order','lawyer','plan','contractDoc','contractInv','approval'];
+const STEP_LABELS=['受講日確定','人数確定','発注書受領','労務士代行','計画届提出','申請代行契約書','申請代行請求書','計画届受理'];
+const APPLY_KEYS=['form81','docreq','docsubmit','notify'];
+const APPLY_LABELS=['様式8-1号の共有','必要書類の提出依頼','申請書類の提出','支給決定通知書の受取'];
 
-const STEP_KEYS = ['date','people','order','lawyer','plan','contractDoc','contractInv','approval'];
-const STEP_LABELS = ['受講日確定','人数確定','発注書受領','労務士代行','計画届提出','申請代行契約書','申請代行請求書','計画届受理'];
+let cases=[],nextId=1,currentFilter='all',currentView='card',currentPhase='plan',editingId=null;
 
-let cases = [];
-let nextId = 1;
-let currentFilter = 'all';
-let currentView = 'card';
-let editingId = null;
-
-// ── GAS 通信 ──
-async function fetchCases() {
+async function fetchCases(){
   setSyncState('syncing','読み込み中...');
-  const res = await fetch(GAS_URL + '?t=' + Date.now());
-  if (!res.ok) throw new Error('読み込み失敗');
-  const json = await res.json();
-  if (!json.ok) throw new Error(json.error || '読み込み失敗');
-  // GASから返ってきた行データをオブジェクトに変換
-  cases = json.cases.map(row => ({
-    id:     Number(row.id),
-    no:     Number(row.no),
-    company:row.company || '',
-    status: row.status  || '',
-    sales:  row.sales   || '',
-    contact:row.contact || '',
-    date:   row.date    || '',
-    venue:  row.venue   || '',
-    people: row.people  || '',
-    bureau: row.bureau  || '',
-    note:   row.note    || '',
-    irregDeadline: row.irregDeadline || '',
-    irregContent:  row.irregContent  || '',
-    planDate:      row.planDate      || '',
-    steps: {
-      date:        row.s_date        || 'todo',
-      people:      row.s_people      || 'todo',
-      order:       row.s_order       || 'todo',
-      lawyer:      row.s_lawyer      || 'todo',
-      plan:        row.s_plan        || 'todo',
-      contractDoc: row.s_contractDoc || 'todo',
-      contractInv: row.s_contractInv || 'todo',
-      approval:    row.s_approval    || 'todo',
-    }
+  const res=await fetch(GAS_URL+'?t='+Date.now());
+  if(!res.ok)throw new Error();
+  const json=await res.json();
+  if(!json.ok)throw new Error();
+  cases=json.cases.map(row=>({
+    id:Number(row.id),no:Number(row.no),
+    company:row.company||'',status:row.status||'',sales:row.sales||'',contact:row.contact||'',
+    date:row.date||'',venue:row.venue||'',people:row.people||'',bureau:row.bureau||'',
+    note:row.note||'',irregDeadline:row.irregDeadline||'',irregContent:row.irregContent||'',planDate:row.planDate||'',
+    steps:{date:row.s_date||'todo',people:row.s_people||'todo',order:row.s_order||'todo',lawyer:row.s_lawyer||'todo',plan:row.s_plan||'todo',contractDoc:row.s_contractDoc||'todo',contractInv:row.s_contractInv||'todo',approval:row.s_approval||'todo'},
+    apply:{form81:row.a_form81||'todo',docreq:row.a_docreq||'todo',docsubmit:row.a_docsubmit||'todo',notify:row.a_notify||'todo'}
   }));
-  nextId = cases.reduce((m,c) => Math.max(m, c.id), 0) + 1;
+  nextId=cases.reduce((m,c)=>Math.max(m,c.id),0)+1;
   setSyncState('ok','同期済み');
 }
 
-async function saveCases() {
+async function saveCases(){
   setSyncState('syncing','保存中...');
-  // casesをGASが受け取りやすいフラット形式に変換
-  const rows = cases.map(c => ({
-    id: c.id, no: c.no,
-    company: c.company, status: c.status, sales: c.sales,
-    contact: c.contact, date: c.date, venue: c.venue,
-    people: c.people, bureau: c.bureau, note: c.note,
-    irregDeadline: c.irregDeadline || '',
-    irregContent:  c.irregContent  || '',
-    planDate:      c.planDate      || '',
-    s_date:        c.steps.date,
-    s_people:      c.steps.people,
-    s_order:       c.steps.order,
-    s_lawyer:      c.steps.lawyer,
-    s_plan:        c.steps.plan,
-    s_contractDoc: c.steps.contractDoc,
-    s_contractInv: c.steps.contractInv,
-    s_approval:    c.steps.approval,
+  const rows=cases.map(c=>({
+    id:c.id,no:c.no,company:c.company,status:c.status,sales:c.sales,contact:c.contact,
+    date:c.date,venue:c.venue,people:c.people,bureau:c.bureau,note:c.note,
+    irregDeadline:c.irregDeadline||'',irregContent:c.irregContent||'',planDate:c.planDate||'',
+    s_date:c.steps.date,s_people:c.steps.people,s_order:c.steps.order,s_lawyer:c.steps.lawyer,
+    s_plan:c.steps.plan,s_contractDoc:c.steps.contractDoc,s_contractInv:c.steps.contractInv,s_approval:c.steps.approval,
+    a_form81:c.apply.form81,a_docreq:c.apply.docreq,a_docsubmit:c.apply.docsubmit,a_notify:c.apply.notify
   }));
-  const res = await fetch(GAS_URL, {
-    method: 'POST',
-    body: JSON.stringify({ action: 'save', cases: rows })
-  });
-  if (!res.ok) throw new Error('保存失敗');
-  const json = await res.json();
-  if (!json.ok) throw new Error('保存失敗');
+  const res=await fetch(GAS_URL,{method:'POST',body:JSON.stringify({action:'save',cases:rows})});
+  if(!res.ok)throw new Error();
+  const json=await res.json();
+  if(!json.ok)throw new Error();
   setSyncState('ok','同期済み');
 }
 
-function setSyncState(state, label) {
-  const dot = document.getElementById('sync-dot');
-  const lbl = document.getElementById('sync-label');
-  dot.className = 'sync-dot' + (state==='syncing'?' syncing':state==='error'?' error':'');
-  lbl.textContent = label;
+function setSyncState(s,l){
+  document.getElementById('sync-dot').className='sync-dot'+(s==='syncing'?' syncing':s==='error'?' error':'');
+  document.getElementById('sync-label').textContent=l;
 }
 
-// ── ヘルパー ──
-function dotClass(v) { return v || 'todo'; }
-function dotText(v, key) {
-  if (key === 'lawyer') { if(v==='done')return '有'; if(v==='na')return '無'; return '―'; }
-  if (v==='done') return '✓'; if (v==='pending') return '…'; if (v==='na') return 'N/A'; return '—';
+function dotClass(v){return v||'todo';}
+function dotText(v,key){
+  if(key==='lawyer'){if(v==='done')return '有';if(v==='na')return '無';return '―';}
+  if(v==='done')return '✓';if(v==='pending')return '…';if(v==='na')return 'N/A';return '—';
 }
-function badgeClass(s) {
-  if(s==='計画届提出済') return 'badge-teishutsu';
-  if(s==='手続き中')     return 'badge-tetsuzuki';
-  if(s==='完了')         return 'badge-hokan';
-  return 'badge-other';
+function badgeClass(s){
+  if(s==='計画届提出済')return 'badge-teishutsu';if(s==='手続き中')return 'badge-tetsuzuki';
+  if(s==='完了')return 'badge-hokan';return 'badge-other';
 }
-function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function stepDot(v,key) { return `<div class="step-dot ${dotClass(v)}">${dotText(v,key)}</div>`; }
-function cellStep(v,key) { return `<span class="cell-step ${dotClass(v)}">${dotText(v,key)}</span>`; }
-
-function irregularBadge(c) {
-  if (!c.irregContent && !c.irregDeadline) return '';
-  let cls='irregular-badge', label='⚠ イレギュラー対応あり';
-  if (c.irregDeadline) {
-    const d=new Date(c.irregDeadline);
-    const mm=String(d.getMonth()+1).padStart(2,'0'), dd=String(d.getDate()).padStart(2,'0');
-    label=`⚠ イレギュラー対応あり　${mm}/${dd}期限`;
-    if(d < new Date()) cls+=' overdue';
-  }
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function stepDot(v,key){return `<div class="step-dot ${dotClass(v)}">${dotText(v,key)}</div>`;}
+function cellStep(v,key){return `<span class="cell-step ${dotClass(v)}">${dotText(v,key)}</span>`;}
+function irregularBadge(c){
+  if(!c.irregContent&&!c.irregDeadline)return '';
+  let cls='irregular-badge',label='⚠ イレギュラー対応あり';
+  if(c.irregDeadline){const d=new Date(c.irregDeadline);label=`⚠ イレギュラー対応あり　${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}期限`;if(d<new Date())cls+=' overdue';}
   return `<span class="${cls}" title="${esc(c.irregContent||'')}" onclick="openModal(${c.id})">${label}</span>`;
 }
 
-// ── フィルター & ソート ──
-function filtered() {
-  const q = document.getElementById('search-input').value.toLowerCase();
-  const sort = document.getElementById('sort-select').value;
-  let arr = cases.filter(c => {
-    const mf = currentFilter==='all' || c.status===currentFilter ||
-      (currentFilter==='other' && c.status!=='計画届提出済' && c.status!=='手続き中' && c.status!=='完了');
-    const mq = !q || c.company.toLowerCase().includes(q) || (c.sales||'').toLowerCase().includes(q) || (c.contact||'').toLowerCase().includes(q);
-    return mf && mq;
+function setPhase(p){
+  currentPhase=p;
+  document.getElementById('phase-plan').style.display=p==='plan'?'':'none';
+  document.getElementById('phase-apply').style.display=p==='apply'?'':'none';
+  document.getElementById('tab-plan').classList.toggle('active',p==='plan');
+  document.getElementById('tab-apply').classList.toggle('active',p==='apply');
+  document.getElementById('add-btn').style.display=p==='plan'?'':'none';
+  render();
+}
+function setFilter(f,btn){currentFilter=f;document.querySelectorAll('.filter-chip').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render();}
+function setView(v){
+  currentView=v;
+  document.getElementById('card-view').style.display=v==='card'?'':'none';
+  document.getElementById('table-view').style.display=v==='table'?'':'none';
+  document.getElementById('view-card').classList.toggle('active',v==='card');
+  document.getElementById('view-table').classList.toggle('active',v==='table');
+  render();
+}
+
+function updateStats(){
+  const ac=cases.filter(c=>c.steps.approval==='done');
+  document.getElementById('stat-total').textContent=cases.length;
+  document.getElementById('stat-teishutsu').textContent=cases.filter(c=>c.status==='計画届提出済').length;
+  document.getElementById('stat-tetsuzuki').textContent=cases.filter(c=>c.status==='手続き中').length;
+  document.getElementById('stat-people').textContent=cases.reduce((s,c)=>s+(parseInt(c.people)||0),0);
+  document.getElementById('astat-total').textContent=ac.length;
+  document.getElementById('astat-form').textContent=ac.filter(c=>c.apply.form81==='done').length;
+  document.getElementById('astat-docs').textContent=ac.filter(c=>c.apply.docsubmit==='done').length;
+  document.getElementById('astat-done').textContent=ac.filter(c=>c.apply.notify==='done').length;
+  document.getElementById('badge-plan').textContent=cases.length;
+  document.getElementById('badge-apply').textContent=ac.length;
+}
+
+function render(){updateStats();if(currentPhase==='plan')renderPlan();else renderApply();}
+
+function renderPlan(){
+  const q=document.getElementById('search-input').value.toLowerCase();
+  const sort=document.getElementById('sort-select').value;
+  let arr=cases.filter(c=>{
+    const mf=currentFilter==='all'||c.status===currentFilter||(currentFilter==='other'&&c.status!=='計画届提出済'&&c.status!=='手続き中'&&c.status!=='完了');
+    const mq=!q||c.company.toLowerCase().includes(q)||(c.sales||'').toLowerCase().includes(q)||(c.contact||'').toLowerCase().includes(q);
+    return mf&&mq;
   });
-  if(sort==='no')      arr.sort((a,b)=>a.no-b.no);
-  else if(sort==='date')    arr.sort((a,b)=>a.date.localeCompare(b.date));
-  else if(sort==='company') arr.sort((a,b)=>a.company.localeCompare(b.company,'ja'));
-  else if(sort==='people')  arr.sort((a,b)=>parseInt(b.people||0)-parseInt(a.people||0));
-  return arr;
-}
-
-function updateStats() {
-  document.getElementById('stat-total').textContent = cases.length;
-  document.getElementById('stat-teishutsu').textContent = cases.filter(c=>c.status==='計画届提出済').length;
-  document.getElementById('stat-tetsuzuki').textContent = cases.filter(c=>c.status==='手続き中').length;
-  document.getElementById('stat-people').textContent = cases.reduce((s,c)=>s+(parseInt(c.people)||0),0);
-}
-
-function render() {
-  updateStats();
-  const arr = filtered();
-  if(currentView==='card') renderCards(arr);
-  else renderTable(arr);
-}
-
-function renderCards(arr) {
-  const el = document.getElementById('card-view');
-  if(!arr.length){ el.innerHTML=emptyState(); return; }
-  el.innerHTML = arr.map(c=>`
+  if(sort==='no')arr.sort((a,b)=>a.no-b.no);
+  else if(sort==='date')arr.sort((a,b)=>a.date.localeCompare(b.date));
+  else if(sort==='company')arr.sort((a,b)=>a.company.localeCompare(b.company,'ja'));
+  else if(sort==='people')arr.sort((a,b)=>parseInt(b.people||0)-parseInt(a.people||0));
+  const cv=document.getElementById('card-view');
+  cv.innerHTML=arr.length?arr.map(c=>`
     <div class="case-card">
       <div class="case-card-header">
         <span class="case-no">No.${c.no}</span>
@@ -522,8 +504,8 @@ function renderCards(arr) {
         <span class="status-badge ${badgeClass(c.status)}">${esc(c.status)}</span>
         ${irregularBadge(c)}
         <div class="card-actions">
-          <button class="icon-btn" title="編集" onclick="openModal(${c.id})">✏️</button>
-          <button class="icon-btn danger" title="削除" onclick="confirmDelete(${c.id})">🗑️</button>
+          <button class="icon-btn" onclick="openModal(${c.id})">✏️</button>
+          <button class="icon-btn danger" onclick="confirmDelete(${c.id})">🗑️</button>
         </div>
       </div>
       <div class="case-info">
@@ -533,194 +515,151 @@ function renderCards(arr) {
         <div class="info-item"><div class="info-label">会場</div><div class="info-value">${esc(c.venue||'―')}</div></div>
         <div class="info-item"><div class="info-label">受講人数</div><div class="info-value">${esc(c.people||'―')}</div></div>
       </div>
-      <div class="progress-area">
-        <div class="steps-row">
-          ${STEP_KEYS.map((k,i)=>`<div class="step">${stepDot(c.steps[k],k)}<div class="step-label">${STEP_LABELS[i]}</div></div>`).join('')}
-        </div>
-      </div>
+      <div class="progress-area"><div class="steps-row">
+        ${STEP_KEYS.map((k,i)=>`<div class="step">${stepDot(c.steps[k],k)}<div class="step-label">${STEP_LABELS[i]}</div></div>`).join('')}
+      </div></div>
       ${c.note?`<div class="note-bar">📝 ${esc(c.note)}</div>`:''}
-    </div>`).join('');
+    </div>`).join(''):emptyState();
+  const tb=document.getElementById('table-body');
+  tb.innerHTML=arr.length?arr.map(c=>`<tr>
+    <td>${c.no}</td><td><strong>${esc(c.company)}</strong></td>
+    <td><span class="status-badge ${badgeClass(c.status)}">${esc(c.status)}</span></td>
+    <td>${esc(c.sales||'―')}</td><td>${esc(c.contact||'―')}</td>
+    <td style="font-size:12px;">${esc(c.date||'―')}</td><td>${esc(c.venue||'―')}</td><td>${esc(c.people||'―')}</td>
+    <td>${cellStep(c.steps.order)}</td><td>${cellStep(c.steps.lawyer,'lawyer')}</td>
+    <td>${esc(c.bureau||'―')}</td><td>${cellStep(c.steps.plan)}</td>
+    <td>${cellStep(c.steps.contractDoc)}</td><td>${cellStep(c.steps.contractInv)}</td><td>${cellStep(c.steps.approval)}</td>
+    <td><div style="display:flex;gap:4px;"><button class="icon-btn" onclick="openModal(${c.id})">✏️</button><button class="icon-btn danger" onclick="confirmDelete(${c.id})">🗑️</button></div></td>
+  </tr>`).join(''):`<tr><td colspan="16">${emptyState()}</td></tr>`;
 }
 
-function renderTable(arr) {
-  const el = document.getElementById('table-body');
-  if(!arr.length){ el.innerHTML=`<tr><td colspan="16">${emptyState()}</td></tr>`; return; }
-  el.innerHTML = arr.map(c=>`
-    <tr>
-      <td>${c.no}</td><td><strong>${esc(c.company)}</strong></td>
-      <td><span class="status-badge ${badgeClass(c.status)}">${esc(c.status)}</span></td>
-      <td>${esc(c.sales||'―')}</td><td>${esc(c.contact||'―')}</td>
-      <td style="font-size:12px;">${esc(c.date||'―')}</td>
-      <td>${esc(c.venue||'―')}</td><td>${esc(c.people||'―')}</td>
-      <td>${cellStep(c.steps.order)}</td>
-      <td>${cellStep(c.steps.lawyer,'lawyer')}</td>
-      <td style="font-size:12px;">${esc(c.bureau||'―')}</td>
-      <td>${cellStep(c.steps.plan)}</td>
-      <td>${cellStep(c.steps.contractDoc)}</td>
-      <td>${cellStep(c.steps.contractInv)}</td>
-      <td>${cellStep(c.steps.approval)}</td>
-      <td><div style="display:flex;gap:4px;">
-        <button class="icon-btn" onclick="openModal(${c.id})">✏️</button>
-        <button class="icon-btn danger" onclick="confirmDelete(${c.id})">🗑️</button>
-      </div></td>
-    </tr>`).join('');
+function renderApply(){
+  updateStats();
+  const q=document.getElementById('asearch-input').value.toLowerCase();
+  const sort=document.getElementById('asort-select').value;
+  let arr=cases.filter(c=>c.steps.approval==='done').filter(c=>!q||c.company.toLowerCase().includes(q)||(c.sales||'').toLowerCase().includes(q));
+  if(sort==='no')arr.sort((a,b)=>a.no-b.no);else arr.sort((a,b)=>a.company.localeCompare(b.company,'ja'));
+  const el=document.getElementById('apply-cards');
+  if(!arr.length){
+    el.innerHTML=`<div class="empty-state"><div class="empty-icon">📨</div><div class="empty-title">申請フェーズの案件がありません</div><div class="empty-desc">計画フェーズで「計画届受理」が✓済になると自動的にここに表示されます。</div></div>`;
+    return;
+  }
+  el.innerHTML=arr.map(c=>{
+    const allDone=APPLY_KEYS.every(k=>c.apply[k]==='done');
+    return `<div class="case-card apply-card">
+      <div class="case-card-header">
+        <span class="case-no">No.${c.no}</span>
+        <span class="company-name">${esc(c.company)}</span>
+        ${allDone?'<span class="status-badge badge-hokan">✓ 申請完了</span>':'<span class="status-badge badge-tetsuzuki">申請手続き中</span>'}
+        ${irregularBadge(c)}
+        <div class="card-actions"><button class="icon-btn" onclick="openModal(${c.id})">✏️</button></div>
+      </div>
+      <div class="case-info">
+        <div class="info-item"><div class="info-label">営業担当</div><div class="info-value">${esc(c.sales||'―')}</div></div>
+        <div class="info-item"><div class="info-label">先方担当</div><div class="info-value">${esc(c.contact||'―')}</div></div>
+        <div class="info-item"><div class="info-label">受講日程</div><div class="info-value" style="font-size:12px;">${esc(c.date||'―')}</div></div>
+        <div class="info-item"><div class="info-label">会場</div><div class="info-value">${esc(c.venue||'―')}</div></div>
+        <div class="info-item"><div class="info-label">受講人数</div><div class="info-value">${esc(c.people||'―')}</div></div>
+      </div>
+      <div class="progress-area"><div class="steps-row">
+        ${APPLY_KEYS.map((k,i)=>`<div class="step"><div class="step-dot ${dotClass(c.apply[k])}">${dotText(c.apply[k])}</div><div class="step-label">${APPLY_LABELS[i]}</div></div>`).join('')}
+      </div></div>
+      ${c.note?`<div class="note-bar">📝 ${esc(c.note)}</div>`:''}
+    </div>`;
+  }).join('');
 }
 
-function emptyState() {
-  return `<div class="empty-state"><div class="empty-icon">📋</div><div class="empty-title">案件が見つかりません</div><div class="empty-desc">フィルターを変更するか、新規案件を追加してください。</div></div>`;
-}
+function emptyState(){return `<div class="empty-state"><div class="empty-icon">📋</div><div class="empty-title">案件が見つかりません</div><div class="empty-desc">フィルターを変更するか、新規案件を追加してください。</div></div>`;}
 
-// ── フィルター / ビュー ──
-function setFilter(f,btn) {
-  currentFilter=f;
-  document.querySelectorAll('.filter-chip').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active'); render();
-}
-function setView(v) {
-  currentView=v;
-  document.getElementById('card-view').style.display=v==='card'?'':'none';
-  document.getElementById('table-view').style.display=v==='table'?'':'none';
-  document.getElementById('view-card').classList.toggle('active',v==='card');
-  document.getElementById('view-table').classList.toggle('active',v==='table');
-  render();
-}
-
-// ── モーダル ──
-function openModal(id) {
-  editingId = id || null;
-  document.getElementById('modal-title').textContent = id ? '案件を編集' : '新規案件を追加';
-  if (id) {
-    const c = cases.find(x=>x.id===id);
-    ['company','sales','contact','date','venue','people','bureau','note'].forEach(f=>{
-      document.getElementById('f-'+f).value = c[f] || '';
-    });
-    document.getElementById('f-irreg-deadline').value = c.irregDeadline || '';
-    document.getElementById('f-irreg-content').value  = c.irregContent  || '';
-    document.getElementById('f-planDate').value        = c.planDate      || '';
-    const sv = c.status;
-    const radio = document.querySelector(`input[name="f-status"][value="${sv}"]`);
-    if(radio) radio.checked = true;
-    STEP_KEYS.forEach(k=>{ document.getElementById('p-'+k).value = c.steps[k] || 'todo'; });
-  } else {
-    ['company','sales','contact','date','venue','people','bureau','note'].forEach(f=>{
-      document.getElementById('f-'+f).value = '';
-    });
-    document.getElementById('f-irreg-deadline').value = '';
-    document.getElementById('f-irreg-content').value  = '';
-    document.getElementById('f-planDate').value        = '';
-    document.getElementById('s-teishutsu').checked = true;
+function openModal(id){
+  editingId=id||null;
+  document.getElementById('modal-title').textContent=id?'案件を編集':'新規案件を追加';
+  if(id){
+    const c=cases.find(x=>x.id===id);
+    ['company','sales','contact','date','venue','people','bureau','note'].forEach(f=>document.getElementById('f-'+f).value=c[f]||'');
+    document.getElementById('f-irreg-deadline').value=c.irregDeadline||'';
+    document.getElementById('f-irreg-content').value=c.irregContent||'';
+    document.getElementById('f-planDate').value=c.planDate||'';
+    const radio=document.querySelector(`input[name="f-status"][value="${c.status}"]`);
+    if(radio)radio.checked=true;
+    STEP_KEYS.forEach(k=>document.getElementById('p-'+k).value=c.steps[k]||'todo');
+    APPLY_KEYS.forEach(k=>document.getElementById('a-'+k).value=c.apply[k]||'todo');
+  }else{
+    ['company','sales','contact','date','venue','people','bureau','note'].forEach(f=>document.getElementById('f-'+f).value='');
+    document.getElementById('f-irreg-deadline').value='';
+    document.getElementById('f-irreg-content').value='';
+    document.getElementById('f-planDate').value='';
+    document.getElementById('s-teishutsu').checked=true;
     STEP_KEYS.forEach(k=>document.getElementById('p-'+k).value='todo');
+    APPLY_KEYS.forEach(k=>document.getElementById('a-'+k).value='todo');
   }
   document.getElementById('modal-overlay').classList.add('open');
   document.getElementById('f-company').focus();
 }
-function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); }
-function closeModalOnBg(e) { if(e.target.id==='modal-overlay') closeModal(); }
+function closeModal(){document.getElementById('modal-overlay').classList.remove('open');}
+function closeModalOnBg(e){if(e.target.id==='modal-overlay')closeModal();}
 
-async function saveCase() {
-  const company = document.getElementById('f-company').value.trim();
-  if(!company){ toast('会社名を入力してください','error'); return; }
-  const btn = document.getElementById('save-btn');
-  btn.disabled=true; btn.textContent='保存中...';
-  const status = document.querySelector('input[name="f-status"]:checked').value;
-  const steps={};
-  STEP_KEYS.forEach(k=>{ steps[k]=document.getElementById('p-'+k).value; });
-  const fields = {
-    company, status, steps,
-    sales:   document.getElementById('f-sales').value,
-    contact: document.getElementById('f-contact').value,
-    date:    document.getElementById('f-date').value,
-    venue:   document.getElementById('f-venue').value,
-    people:  document.getElementById('f-people').value,
-    bureau:  document.getElementById('f-bureau').value,
-    note:    document.getElementById('f-note').value,
-    irregDeadline: document.getElementById('f-irreg-deadline').value,
-    irregContent:  document.getElementById('f-irreg-content').value.trim(),
-    planDate:      document.getElementById('f-planDate').value,
+async function saveCase(){
+  const company=document.getElementById('f-company').value.trim();
+  if(!company){toast('会社名を入力してください','error');return;}
+  const btn=document.getElementById('save-btn');
+  btn.disabled=true;btn.textContent='保存中...';
+  const status=document.querySelector('input[name="f-status"]:checked').value;
+  const steps={};STEP_KEYS.forEach(k=>steps[k]=document.getElementById('p-'+k).value);
+  const apply={};APPLY_KEYS.forEach(k=>apply[k]=document.getElementById('a-'+k).value);
+  const fields={company,status,steps,apply,
+    sales:document.getElementById('f-sales').value,contact:document.getElementById('f-contact').value,
+    date:document.getElementById('f-date').value,venue:document.getElementById('f-venue').value,
+    people:document.getElementById('f-people').value,bureau:document.getElementById('f-bureau').value,
+    note:document.getElementById('f-note').value,
+    irregDeadline:document.getElementById('f-irreg-deadline').value,
+    irregContent:document.getElementById('f-irreg-content').value.trim(),
+    planDate:document.getElementById('f-planDate').value,
   };
-  if (editingId) {
-    const c = cases.find(x=>x.id===editingId);
-    Object.assign(c, fields);
-  } else {
-    const maxNo = cases.reduce((m,c)=>Math.max(m,c.no),0);
-    cases.push({ id:nextId++, no:maxNo+1, ...fields });
-  }
-  try {
-    await saveCases();
-    toast(editingId?'更新しました ✓':'案件を追加しました ✓','success');
-    closeModal(); render();
-  } catch(e) {
-    setSyncState('error','保存失敗');
-    toast('保存に失敗しました。再度お試しください。','error');
-  }
-  btn.disabled=false; btn.textContent='💾 保存する';
+  if(editingId){const c=cases.find(x=>x.id===editingId);Object.assign(c,fields);}
+  else{const maxNo=cases.reduce((m,c)=>Math.max(m,c.no),0);cases.push({id:nextId++,no:maxNo+1,...fields});}
+  try{await saveCases();toast(editingId?'更新しました ✓':'案件を追加しました ✓','success');closeModal();render();}
+  catch(e){setSyncState('error','保存失敗');toast('保存に失敗しました。再度お試しください。','error');}
+  btn.disabled=false;btn.textContent='💾 保存する';
 }
 
-// ── 削除 ──
-function confirmDelete(id) {
-  const c = cases.find(x=>x.id===id);
-  document.getElementById('confirm-desc').textContent = `「${c.company}」を削除します。この操作は元に戻せません。`;
-  document.getElementById('confirm-ok').onclick = ()=>deleteCase(id);
+function confirmDelete(id){
+  const c=cases.find(x=>x.id===id);
+  document.getElementById('confirm-desc').textContent=`「${c.company}」を削除します。この操作は元に戻せません。`;
+  document.getElementById('confirm-ok').onclick=()=>deleteCase(id);
   document.getElementById('confirm-overlay').classList.add('open');
 }
-function closeConfirm(e) { if(!e||e.target.id==='confirm-overlay') document.getElementById('confirm-overlay').classList.remove('open'); }
-async function deleteCase(id) {
-  cases = cases.filter(c=>c.id!==id);
+function closeConfirm(e){if(!e||e.target.id==='confirm-overlay')document.getElementById('confirm-overlay').classList.remove('open');}
+async function deleteCase(id){
+  cases=cases.filter(c=>c.id!==id);
   document.getElementById('confirm-overlay').classList.remove('open');
-  try {
-    await saveCases();
-    render(); toast('削除しました','success');
-  } catch(e) {
-    setSyncState('error','保存失敗');
-    toast('削除に失敗しました','error');
-  }
+  try{await saveCases();render();toast('削除しました','success');}
+  catch(e){setSyncState('error','保存失敗');toast('削除に失敗しました','error');}
 }
 
-// ── CSV出力 ──
-function exportCSV() {
-  const header=['No','会社名','ステータス','営業担当','先方担当','受講日程','会場','人数','発注書受領','労務士代行','管轄労働局','計画届提出','申請代行契約書','申請代行請求書','計画届受理','備考','イレギュラー期限','イレギュラー内容'];
-  const rows=cases.map(c=>[
-    c.no,c.company,c.status,c.sales,c.contact,c.date,c.venue,c.people,
-    c.steps.order,c.steps.lawyer,c.bureau,c.steps.plan,
-    c.steps.contractDoc,c.steps.contractInv,c.steps.approval,
-    c.note,c.irregDeadline||'',c.irregContent||''
-  ]);
+function exportCSV(){
+  const header=['No','会社名','ステータス','営業担当','先方担当','受講日程','会場','人数','発注書受領','労務士代行','管轄労働局','計画届提出','計画届提出日','申請代行契約書','申請代行請求書','計画届受理','様式8-1号共有','必要書類提出依頼','申請書類提出','支給決定通知書受取','備考','イレギュラー期限','イレギュラー内容'];
+  const rows=cases.map(c=>[c.no,c.company,c.status,c.sales,c.contact,c.date,c.venue,c.people,c.steps.order,c.steps.lawyer,c.bureau,c.steps.plan,c.planDate||'',c.steps.contractDoc,c.steps.contractInv,c.steps.approval,c.apply.form81,c.apply.docreq,c.apply.docsubmit,c.apply.notify,c.note,c.irregDeadline||'',c.irregContent||'']);
   const csv='\uFEFF'+[header,...rows].map(r=>r.map(v=>`"${String(v||'').replace(/"/g,'""')}"`).join(',')).join('\n');
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
-  a.download=`AI研修_案件管理_${new Date().toISOString().slice(0,10)}.csv`;
-  a.click();
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
+  a.download=`AI研修_案件管理_${new Date().toISOString().slice(0,10)}.csv`;a.click();
   toast('CSVを出力しました','success');
 }
 
-// ── トースト ──
-function toast(msg,type='') {
-  const el=document.getElementById('toast');
-  el.textContent=msg; el.className='toast '+(type?type+' ':'')+'show';
+function toast(msg,type=''){
+  const el=document.getElementById('toast');el.textContent=msg;
+  el.className='toast '+(type?type+' ':'')+'show';
   setTimeout(()=>el.classList.remove('show'),2800);
 }
 
-// ── 初期化 ──
 const now=new Date();
-document.getElementById('today-label').textContent=
-  `${now.getFullYear()}/${String(now.getMonth()+1).padStart(2,'0')}/${String(now.getDate()).padStart(2,'0')}`;
+document.getElementById('today-label').textContent=`${now.getFullYear()}/${String(now.getMonth()+1).padStart(2,'0')}/${String(now.getDate()).padStart(2,'0')}`;
 
 (async()=>{
-  try {
-    await fetchCases();
-    render();
-  } catch(e) {
-    setSyncState('error','接続失敗');
-    document.getElementById('loading-text').textContent='接続に失敗しました。URLの設定を確認してください。';
-    console.error(e);
-    return;
-  }
+  try{await fetchCases();render();}
+  catch(e){setSyncState('error','接続失敗');document.getElementById('loading-text').textContent='接続に失敗しました。URLの設定を確認してください。';console.error(e);return;}
   document.getElementById('loading-screen').style.display='none';
-
-  // 30秒ごとに自動更新（他のユーザーの変更を反映）
-  setInterval(async()=>{
-    try { await fetchCases(); render(); } catch(_){}
-  }, 30000);
+  setInterval(async()=>{try{await fetchCases();render();}catch(_){}},30000);
 })();
 </script>
 </body>

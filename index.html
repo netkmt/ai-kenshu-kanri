@@ -399,6 +399,7 @@ async function fetchCases(){
     id:Number(row.id),no:Number(row.no),
     company:row.company||'',status:row.status||'',sales:row.sales||'',contact:row.contact||'',
     date:row.date||'',venue:row.venue||'',people:row.people||'',bureau:row.bureau||'',
+    note:row.note||'',irregDeadline:row.irregDeadline ? String(row.irregDeadline).slice(0,10) : '',irregContent:row.irregContent||'',
     planDate: row.planDate ? String(row.planDate).slice(0,10) : '',
     steps:{date:row.s_date||'todo',people:row.s_people||'todo',order:row.s_order||'todo',lawyer:row.s_lawyer||'todo',plan:row.s_plan||'todo',contractDoc:row.s_contractDoc||'todo',contractInv:row.s_contractInv||'todo',approval:row.s_approval||'todo'},
     apply:{form81:row.a_form81||'todo',docreq:row.a_docreq||'todo',docsubmit:row.a_docsubmit||'todo',notify:row.a_notify||'todo'}

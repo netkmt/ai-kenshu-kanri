@@ -170,6 +170,67 @@ tr:hover td { background:var(--surface2); }
 .empty-icon { font-size:40px; margin-bottom:12px; }
 .empty-title { font-size:16px; font-weight:500; margin-bottom:6px; color:var(--text); }
 .empty-desc { font-size:13px; }
+/* ── Date slots ── */
+.date-slot { display:inline-flex; align-items:center; gap:6px; background:var(--blue-bg); color:var(--blue-text); border:1px solid var(--blue-border); border-radius:20px; padding:4px 10px; font-size:12px; font-weight:500; }
+.date-slot-remove { background:none; border:none; cursor:pointer; color:var(--blue-text); font-size:14px; line-height:1; padding:0; opacity:0.7; }
+.date-slot-remove:hover { opacity:1; }
+
+/* ── PDF files area ── */
+.pdf-bar { padding:8px 16px 10px; border-top:1px solid var(--border); }
+.pdf-bar-title { font-size:11px; font-weight:600; color:var(--text2); margin-bottom:6px; letter-spacing:0.3px; }
+.pdf-list { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:6px; }
+.pdf-chip { display:inline-flex; align-items:center; gap:5px; background:var(--blue-bg); color:var(--blue-text); border:1px solid var(--blue-border); border-radius:6px; padding:4px 8px; font-size:12px; text-decoration:none; }
+.pdf-chip:hover { opacity:0.8; }
+.pdf-chip-del { background:none; border:none; cursor:pointer; color:var(--red-text); font-size:13px; padding:0; margin-left:2px; opacity:0.7; }
+.pdf-chip-del:hover { opacity:1; }
+.pdf-upload-wrap { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.pdf-upload-label { display:inline-flex; align-items:center; gap:6px; padding:5px 12px; border:1px dashed var(--border-strong); border-radius:var(--radius-sm); font-size:12px; color:var(--text2); cursor:pointer; transition:all .15s; }
+.pdf-upload-label:hover { border-color:var(--accent); color:var(--accent); background:var(--blue-bg); }
+.pdf-uploading { font-size:12px; color:var(--text2); }
+
+/* ── Company group ── */
+.company-group { border-radius:var(--radius-sm); margin-bottom:16px; overflow:hidden; border:1px solid var(--border); }
+.company-group:last-child { margin-bottom:0; }
+.company-group-header { display:flex; align-items:center; gap:10px; padding:10px 14px; background:var(--surface2); border-bottom:1px solid var(--border); flex-wrap:wrap; }
+.company-group-name { font-size:13px; font-weight:700; color:var(--text); }
+.company-group-meta { display:flex; align-items:center; gap:8px; font-size:12px; color:var(--text2); }
+.company-group-cards { padding:12px; display:flex; flex-direction:column; gap:10px; }
+/* カラーライン：グループごとに色を変える */
+.cg-color-0 { border-left:4px solid #378add; }
+.cg-color-1 { border-left:4px solid #1d9e75; }
+.cg-color-2 { border-left:4px solid #ba7517; }
+.cg-color-3 { border-left:4px solid #7f77dd; }
+.cg-color-4 { border-left:4px solid #e24b4a; }
+.cg-color-5 { border-left:4px solid #888780; }
+.cg-color-0 .company-group-header { background:#f0f6fd; }
+.cg-color-1 .company-group-header { background:#edf8f3; }
+.cg-color-2 .company-group-header { background:#fdf6ea; }
+.cg-color-3 .company-group-header { background:#f3f2fe; }
+.cg-color-4 .company-group-header { background:#fdf0f0; }
+.cg-color-5 .company-group-header { background:var(--surface2); }
+/* グループなし */
+.cg-ungrouped { border-left:4px solid var(--border-strong); }
+.cg-ungrouped .company-group-header { background:var(--surface2); }
+
+/* ── Schedule groups ── */
+.sched-group { background:var(--surface); border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--shadow); overflow:hidden; margin-bottom:12px; }
+.sched-group-header { display:flex; align-items:center; gap:14px; padding:14px 18px; cursor:pointer; user-select:none; transition:background .15s; }
+.sched-group-header:hover { background:var(--surface2); }
+.sched-chevron { font-size:13px; color:var(--text3); transition:transform .2s; flex-shrink:0; }
+.sched-chevron.open { transform:rotate(180deg); }
+.sched-date { font-size:15px; font-weight:700; color:var(--text); flex:1; }
+.sched-stats { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.sched-stat { display:flex; align-items:center; gap:4px; font-size:12px; color:var(--text2); white-space:nowrap; }
+.sched-stat strong { color:var(--text); font-weight:700; font-size:13px; }
+.sched-stat-divider { width:1px; height:14px; background:var(--border-strong); }
+.sched-status-chips { display:flex; gap:5px; flex-wrap:wrap; }
+.sched-chip { font-size:11px; font-weight:600; padding:2px 8px; border-radius:20px; }
+.sched-irreg-alert { display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:600; padding:2px 8px; border-radius:20px; background:var(--red-bg); color:var(--red-text); border:1px solid var(--red-border); }
+.sched-irreg-alert.has-overdue { background:var(--red-border); color:#fff; animation:pulse 1.6s ease-in-out infinite; }
+.sched-body { display:none; border-top:1px solid var(--border); padding:16px; }
+.sched-body.open { display:block; }
+.sched-body-toolbar { display:flex; align-items:center; gap:8px; margin-bottom:12px; flex-wrap:wrap; }
+
 @media(max-width:768px){
   .summary-grid{grid-template-columns:repeat(2,1fr);}
   .case-info{grid-template-columns:repeat(2,1fr);}
@@ -177,6 +238,7 @@ tr:hover td { background:var(--surface2); }
   .step-form-grid{grid-template-columns:repeat(2,1fr);}
   .main,.topbar,.phase-tabs{padding-left:16px;padding-right:16px;}
   .steps-row::before{display:none;}
+  .sched-stats{gap:6px;}
 }
 </style>
 </head>
@@ -216,25 +278,15 @@ tr:hover td { background:var(--surface2); }
 
   <!-- 計画フェーズ -->
   <div id="phase-plan">
-    <div class="summary-grid">
+    <div class="summary-grid" style="grid-template-columns:repeat(5,1fr);">
       <div class="summary-card"><div class="summary-label">総案件数</div><div class="summary-value" id="stat-total">0</div><div class="summary-sub">件</div></div>
       <div class="summary-card"><div class="summary-label">計画届提出済</div><div class="summary-value" id="stat-teishutsu" style="color:var(--blue-text)">0</div><div class="summary-sub">件</div></div>
       <div class="summary-card"><div class="summary-label">手続き中</div><div class="summary-value" id="stat-tetsuzuki" style="color:var(--amber-text)">0</div><div class="summary-sub">件</div></div>
       <div class="summary-card"><div class="summary-label">受講予定 総人数</div><div class="summary-value" id="stat-people" style="color:var(--accent)">0</div><div class="summary-sub">名</div></div>
+      <div class="summary-card" style="border-color:var(--red-border);"><div class="summary-label" style="color:var(--red-text);">⚠ イレギュラー対応</div><div class="summary-value" id="stat-irreg" style="color:var(--red-text)">0</div><div class="summary-sub" id="stat-irreg-sub">件</div></div>
     </div>
     <div class="toolbar">
-      <div class="search-wrap"><span class="search-icon">🔍</span><input class="search-input" type="text" id="search-input" placeholder="会社名・担当者で検索..." oninput="render()"></div>
-      <div class="filter-group">
-        <button class="filter-chip active" onclick="setFilter('all',this)">すべて</button>
-        <button class="filter-chip" onclick="setFilter('計画届提出済',this)">計画届提出済</button>
-        <button class="filter-chip" onclick="setFilter('手続き中',this)">手続き中</button>
-        <button class="filter-chip" onclick="setFilter('完了',this)">完了</button>
-        <button class="filter-chip" onclick="setFilter('other',this)">その他</button>
-      </div>
-      <select class="sort-select" id="sort-select" onchange="render()">
-        <option value="no">No順</option><option value="date">受講日順</option>
-        <option value="company">会社名順</option><option value="people">人数順</option>
-      </select>
+      <div class="search-wrap"><span class="search-icon">🔍</span><input class="search-input" type="text" id="search-input" placeholder="日程・会社名・担当者で検索..." oninput="render()"></div>
       <div class="view-toggle">
         <button class="view-btn active" id="view-card" onclick="setView('card')">☰ カード</button>
         <button class="view-btn" id="view-table" onclick="setView('table')">⊞ テーブル</button>
@@ -246,7 +298,9 @@ tr:hover td { background:var(--surface2); }
       <div class="legend-item"><div class="legend-dot" style="background:var(--surface2);border:1.5px solid var(--border-strong);color:var(--text3);">—</div>未</div>
       <div class="legend-item"><div class="legend-dot" style="background:var(--gray-bg);border:1.5px solid var(--border);color:var(--text3);font-size:8px;">N/A</div>対応不要</div>
     </div>
-    <div id="card-view" class="cards-grid"></div>
+    <!-- カードビュー：日程グループ -->
+    <div id="card-view"></div>
+    <!-- テーブルビュー -->
     <div id="table-view" style="display:none;">
       <div class="table-wrap"><table>
         <thead><tr>
@@ -268,10 +322,7 @@ tr:hover td { background:var(--surface2); }
       <div class="summary-card"><div class="summary-label">支給決定通知書 受取済</div><div class="summary-value" id="astat-done" style="color:var(--amber-text)">0</div><div class="summary-sub">件</div></div>
     </div>
     <div class="toolbar">
-      <div class="search-wrap"><span class="search-icon">🔍</span><input class="search-input" type="text" id="asearch-input" placeholder="会社名・担当者で検索..." oninput="renderApply()"></div>
-      <select class="sort-select" id="asort-select" onchange="renderApply()">
-        <option value="no">No順</option><option value="company">会社名順</option>
-      </select>
+      <div class="search-wrap"><span class="search-icon">🔍</span><input class="search-input" type="text" id="asearch-input" placeholder="日程・会社名・担当者で検索..." oninput="renderApply()"></div>
     </div>
     <div class="legend">
       <div class="legend-item"><div class="legend-dot" style="background:var(--green-bg);border:1.5px solid var(--green-border);color:var(--green-text);">✓</div>完了</div>
@@ -309,8 +360,22 @@ tr:hover td { background:var(--surface2); }
           <div class="form-group"><label class="form-label">先方担当</label><input class="form-input" id="f-contact" type="text"></div>
           <div class="form-group"><label class="form-label">会場</label><input class="form-input" id="f-venue" type="text"></div>
         </div>
+        <div class="form-row single">
+          <div class="form-group"><label class="form-label">グループ会社名 <span style="font-size:11px;color:var(--text3);">（同一グループの企業をまとめる場合に入力）</span></label><input class="form-input" id="f-groupName" type="text" placeholder="例：千歳グループ、AkaraNグループ　※未入力はグループなし"></div>
+        </div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label">受講日程</label><input class="form-input" id="f-date" type="text" placeholder="例：2026/06/03・2026/06/17"></div>
+          <div class="form-group" style="grid-column:1/-1;">
+            <label class="form-label">受講日程（最大5日まで選択可）</label>
+            <div id="date-picker-wrap">
+              <div id="date-slots" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;"></div>
+              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                <input type="date" id="date-add-input" class="form-input" style="width:180px;">
+                <button type="button" onclick="addDateSlot()" class="btn-ghost" style="padding:6px 12px;font-size:12px;">＋ 日付を追加</button>
+                <span id="date-count-label" style="font-size:12px;color:var(--text3);">0 / 5日</span>
+              </div>
+            </div>
+            <input type="hidden" id="f-date">
+          </div>
           <div class="form-group"><label class="form-label">受講人数</label><input class="form-input" id="f-people" type="text" placeholder="例：11名"></div>
         </div>
         <div class="form-row single">
@@ -398,9 +463,11 @@ async function fetchCases(){
   cases=json.cases.map(row=>({
     id:Number(row.id),no:Number(row.no),
     company:row.company||'',status:row.status||'',sales:row.sales||'',contact:row.contact||'',
+    groupName:row.groupName||'',
     date:row.date||'',venue:row.venue||'',people:row.people||'',bureau:row.bureau||'',
     note:row.note||'',irregDeadline:row.irregDeadline ? String(row.irregDeadline).slice(0,10) : '',irregContent:row.irregContent||'',
     planDate: row.planDate ? String(row.planDate).slice(0,10) : '',
+    planDocs: (() => { try { return row.planDocs ? JSON.parse(row.planDocs) : []; } catch(e) { return []; } })(),
     steps:{date:row.s_date||'todo',people:row.s_people||'todo',order:row.s_order||'todo',lawyer:row.s_lawyer||'todo',plan:row.s_plan||'todo',contractDoc:row.s_contractDoc||'todo',contractInv:row.s_contractInv||'todo',approval:row.s_approval||'todo'},
     apply:{form81:row.a_form81||'todo',docreq:row.a_docreq||'todo',docsubmit:row.a_docsubmit||'todo',notify:row.a_notify||'todo'}
   }));
@@ -412,8 +479,10 @@ async function saveCases(){
   setSyncState('syncing','保存中...');
   const rows=cases.map(c=>({
     id:c.id,no:c.no,company:c.company,status:c.status,sales:c.sales,contact:c.contact,
+    groupName:c.groupName||'',
     date:c.date,venue:c.venue,people:c.people,bureau:c.bureau,note:c.note,
     irregDeadline:c.irregDeadline||'',irregContent:c.irregContent||'',planDate:c.planDate||'',
+    planDocs:JSON.stringify(c.planDocs||[]),
     s_date:c.steps.date,s_people:c.steps.people,s_order:c.steps.order,s_lawyer:c.steps.lawyer,
     s_plan:c.steps.plan,s_contractDoc:c.steps.contractDoc,s_contractInv:c.steps.contractInv,s_approval:c.steps.approval,
     a_form81:c.apply.form81,a_docreq:c.apply.docreq,a_docsubmit:c.apply.docsubmit,a_notify:c.apply.notify
@@ -458,7 +527,6 @@ function setPhase(p){
   document.getElementById('add-btn').style.display=p==='plan'?'':'none';
   render();
 }
-function setFilter(f,btn){currentFilter=f;document.querySelectorAll('.filter-chip').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render();}
 function setView(v){
   currentView=v;
   document.getElementById('card-view').style.display=v==='card'?'':'none';
@@ -474,6 +542,18 @@ function updateStats(){
   document.getElementById('stat-teishutsu').textContent=cases.filter(c=>c.status==='計画届提出済').length;
   document.getElementById('stat-tetsuzuki').textContent=cases.filter(c=>c.status==='手続き中').length;
   document.getElementById('stat-people').textContent=cases.reduce((s,c)=>s+(parseInt(c.people)||0),0);
+  const irregCases=cases.filter(c=>c.irregContent||c.irregDeadline);
+  const overdueCases=irregCases.filter(c=>c.irregDeadline&&new Date(c.irregDeadline)<new Date());
+  const irregEl=document.getElementById('stat-irreg');
+  const irregSub=document.getElementById('stat-irreg-sub');
+  irregEl.textContent=irregCases.length;
+  if(overdueCases.length>0){
+    irregSub.textContent=`件（期限超過 ${overdueCases.length}件）`;
+    irregEl.style.animation='pulse 1.5s ease-in-out infinite';
+  } else {
+    irregSub.textContent='件';
+    irregEl.style.animation='';
+  }
   document.getElementById('astat-total').textContent=ac.length;
   document.getElementById('astat-form').textContent=ac.filter(c=>c.apply.form81==='done').length;
   document.getElementById('astat-docs').textContent=ac.filter(c=>c.apply.docsubmit==='done').length;
@@ -484,43 +564,171 @@ function updateStats(){
 
 function render(){updateStats();if(currentPhase==='plan')renderPlan();else renderApply();}
 
+// ── 日程グルーピング（3階層） ──
+function buildScheduleGroups(arr){
+  const schedMap=new Map();
+  arr.forEach(c=>{
+    const schedKey=String(c.date||'').trim()||'日程未設定';
+    if(!schedMap.has(schedKey))schedMap.set(schedKey,new Map());
+    const groupMap=schedMap.get(schedKey);
+    // グループ名なし → 会社ごとに個別エントリ（キー：__solo__+id）
+    const groupKey=c.groupName&&c.groupName.trim()?c.groupName.trim():`__solo__${c.id}`;
+    if(!groupMap.has(groupKey))groupMap.set(groupKey,{name:groupKey,solo:!c.groupName||!c.groupName.trim(),companies:[]});
+    groupMap.get(groupKey).companies.push(c);
+  });
+  return Array.from(schedMap.entries()).map(([schedKey,groupMap])=>{
+    const groups=Array.from(groupMap.values()).sort((a,b)=>{
+      // グループあり → 先 / グループなし（個別）→ 後
+      if(a.solo&&!b.solo)return 1;
+      if(!a.solo&&b.solo)return -1;
+      return a.name.localeCompare(b.name,'ja');
+    });
+    return {key:schedKey,groups};
+  }).sort((a,b)=>{
+    if(a.key==='日程未設定')return 1;
+    if(b.key==='日程未設定')return -1;
+    return a.key.localeCompare(b.key);
+  });
+}
+function groupStats(companies){
+  return {
+    total:companies.length,
+    people:companies.reduce((s,c)=>s+(parseInt(c.people)||0),0),
+    teishutsu:companies.filter(c=>c.status==='計画届提出済').length,
+    tetsuzuki:companies.filter(c=>c.status==='手続き中').length,
+    kanryo:companies.filter(c=>c.status==='完了').length,
+    other:companies.filter(c=>c.status!=='計画届提出済'&&c.status!=='手続き中'&&c.status!=='完了').length,
+    hasIrreg:companies.some(c=>c.irregContent||c.irregDeadline),
+    hasOverdue:companies.some(c=>c.irregDeadline&&new Date(c.irregDeadline)<new Date()),
+  };
+}
+const openGroups=new Set();
+function toggleGroup(key){
+  if(openGroups.has(key))openGroups.delete(key);else openGroups.add(key);
+  render();
+}
+
+function companyCaseCard(c){
+  const docs = c.planDocs||[];
+  const pdfBar = `<div class="pdf-bar">
+    <div class="pdf-bar-title">📄 計画届PDF</div>
+    <div class="pdf-list" id="pdf-list-${c.id}">
+      ${docs.map(d=>`
+        <a class="pdf-chip" href="${esc(d.fileUrl)}" target="_blank" rel="noopener">📄 ${esc(d.fileName)}</a>
+        <button class="pdf-chip-del" onclick="deletePlanDoc(${c.id},'${d.fileId}')" title="削除">🗑</button>
+      `).join('')}
+    </div>
+    <div class="pdf-upload-wrap">
+      <label class="pdf-upload-label">
+        📎 PDFを追加
+        <input type="file" accept="application/pdf" style="display:none;" onchange="uploadPlanDoc(event,${c.id})">
+      </label>
+      <span class="pdf-uploading" id="pdf-uploading-${c.id}" style="display:none;">アップロード中...</span>
+    </div>
+  </div>`;
+  return `<div class="case-card">
+    <div class="case-card-header">
+      <span class="case-no">No.${c.no}</span>
+      <span class="company-name">${esc(c.company)}</span>
+      <span class="status-badge ${badgeClass(c.status)}">${esc(c.status)}</span>
+      ${irregularBadge(c)}
+      <div class="card-actions">
+        <button class="icon-btn" onclick="openModal(${c.id})">✏️</button>
+        <button class="icon-btn danger" onclick="confirmDelete(${c.id})">🗑️</button>
+      </div>
+    </div>
+    <div class="case-info">
+      <div class="info-item"><div class="info-label">営業担当</div><div class="info-value">${esc(c.sales||'―')}</div></div>
+      <div class="info-item"><div class="info-label">先方担当</div><div class="info-value">${esc(c.contact||'―')}</div></div>
+      <div class="info-item"><div class="info-label">受講日程</div><div class="info-value" style="font-size:12px;">${esc(c.date||'―')}</div></div>
+      <div class="info-item"><div class="info-label">会場</div><div class="info-value">${esc(c.venue||'―')}</div></div>
+      <div class="info-item"><div class="info-label">受講人数</div><div class="info-value">${esc(c.people||'―')}</div></div>
+    </div>
+    <div class="progress-area"><div class="steps-row">
+      ${STEP_KEYS.map((k,i)=>`<div class="step">${stepDot(c.steps[k],k)}<div class="step-label">${STEP_LABELS[i]}</div></div>`).join('')}
+    </div></div>
+    ${pdfBar}
+    ${c.note?`<div class="note-bar">📝 ${esc(c.note)}</div>`:''}
+  </div>`;
+}
+
+function renderCompanyGroup(g, colorIdx){
+  // グループなし（個別）→ ヘッダーなしでカードをそのまま表示
+  if(g.solo){
+    return `<div style="margin-bottom:10px;">${g.companies.map(c=>companyCaseCard(c)).join('')}</div>`;
+  }
+  const groupLabel=g.name;
+  const total=g.companies.length;
+  const people=g.companies.reduce((s,c)=>s+(parseInt(c.people)||0),0);
+  const salesMap={};
+  g.companies.forEach(c=>{if(c.sales)salesMap[c.sales]=(salesMap[c.sales]||0)+1;});
+  const manager=Object.keys(salesMap).sort((a,b)=>salesMap[b]-salesMap[a])[0]||'';
+  const colorClass=`cg-color-${colorIdx%6}`;
+  const cards=g.companies.map(c=>companyCaseCard(c)).join('');
+  return `<div class="company-group ${colorClass}">
+    <div class="company-group-header">
+      <span class="company-group-name">🏢 ${esc(groupLabel)}</span>
+      <div class="company-group-meta">
+        <span>${total}社</span><span>・</span><span>${people}名</span>
+        ${manager?`<span>・</span><span>担当：${esc(manager)}</span>`:''}
+      </div>
+    </div>
+    <div class="company-group-cards">${cards}</div>
+  </div>`;
+}
+
 function renderPlan(){
   const q=document.getElementById('search-input').value.toLowerCase();
-  const sort=document.getElementById('sort-select').value;
   let arr=cases.filter(c=>{
-    const mf=currentFilter==='all'||c.status===currentFilter||(currentFilter==='other'&&c.status!=='計画届提出済'&&c.status!=='手続き中'&&c.status!=='完了');
-    const mq=!q||c.company.toLowerCase().includes(q)||(c.sales||'').toLowerCase().includes(q)||(c.contact||'').toLowerCase().includes(q);
-    return mf&&mq;
+    if(!q)return true;
+    return c.date.toLowerCase().includes(q)||c.company.toLowerCase().includes(q)||(c.sales||'').toLowerCase().includes(q)||(c.contact||'').toLowerCase().includes(q)||(c.groupName||'').toLowerCase().includes(q);
   });
-  if(sort==='no')arr.sort((a,b)=>a.no-b.no);
-  else if(sort==='date')arr.sort((a,b)=>a.date.localeCompare(b.date));
-  else if(sort==='company')arr.sort((a,b)=>a.company.localeCompare(b.company,'ja'));
-  else if(sort==='people')arr.sort((a,b)=>parseInt(b.people||0)-parseInt(a.people||0));
+  const schedGroups=buildScheduleGroups(arr);
   const cv=document.getElementById('card-view');
-  cv.innerHTML=arr.length?arr.map(c=>`
-    <div class="case-card">
-      <div class="case-card-header">
-        <span class="case-no">No.${c.no}</span>
-        <span class="company-name">${esc(c.company)}</span>
-        <span class="status-badge ${badgeClass(c.status)}">${esc(c.status)}</span>
-        ${irregularBadge(c)}
-        <div class="card-actions">
-          <button class="icon-btn" onclick="openModal(${c.id})">✏️</button>
-          <button class="icon-btn danger" onclick="confirmDelete(${c.id})">🗑️</button>
+  if(!schedGroups.length){
+    cv.innerHTML=`<div class="empty-state"><div class="empty-icon">📋</div><div class="empty-title">案件が見つかりません</div><div class="empty-desc">検索条件を変えるか、新規案件を追加してください。</div></div>`;
+  } else {
+    cv.innerHTML=schedGroups.map(sg=>{
+      const allCompanies=sg.groups.flatMap(g=>g.companies);
+      const s=groupStats(allCompanies);
+      const isOpen=openGroups.has(sg.key);
+      const chips=[
+        s.teishutsu?`<span class="sched-chip badge-teishutsu">計画届提出済 ${s.teishutsu}件</span>`:'',
+        s.tetsuzuki?`<span class="sched-chip badge-tetsuzuki">手続き中 ${s.tetsuzuki}件</span>`:'',
+        s.kanryo?`<span class="sched-chip badge-hokan">完了 ${s.kanryo}件</span>`:'',
+        s.other?`<span class="sched-chip badge-other">その他 ${s.other}件</span>`:'',
+      ].filter(Boolean).join('');
+      const irregHTML=s.hasIrreg?`<span class="sched-irreg-alert${s.hasOverdue?' has-overdue':''}">⚠ イレギュラーあり</span>`:'';
+      // グループ会社一覧（lazy render）
+      let bodyHTML='';
+      if(isOpen){
+        // グループ未設定のみの場合はグループヘッダーを省略
+        const hasGroups=sg.groups.some(g=>!g.solo);
+        if(hasGroups){
+          bodyHTML=sg.groups.map((g,i)=>renderCompanyGroup(g,i)).join('');
+        } else {
+          bodyHTML=`<div class="cards-grid">${allCompanies.map(c=>companyCaseCard(c)).join('')}</div>`;
+        }
+      }
+      const keyEsc=sg.key.replace(/'/g,"\\'");
+      return `<div class="sched-group">
+        <div class="sched-group-header" onclick="toggleGroup('${keyEsc}')">
+          <span class="sched-chevron${isOpen?' open':''}">▼</span>
+          <span class="sched-date">📅 ${esc(sg.key)}</span>
+          <div class="sched-stats">
+            <div class="sched-stat"><strong>${s.total}</strong>件</div>
+            <div class="sched-stat-divider"></div>
+            <div class="sched-stat"><strong>${s.people}</strong>名</div>
+            <div class="sched-stat-divider"></div>
+            <div class="sched-status-chips">${chips}</div>
+            ${irregHTML}
+          </div>
         </div>
-      </div>
-      <div class="case-info">
-        <div class="info-item"><div class="info-label">営業担当</div><div class="info-value">${esc(c.sales||'―')}</div></div>
-        <div class="info-item"><div class="info-label">先方担当</div><div class="info-value">${esc(c.contact||'―')}</div></div>
-        <div class="info-item"><div class="info-label">受講日程</div><div class="info-value" style="font-size:12px;">${esc(c.date||'―')}</div></div>
-        <div class="info-item"><div class="info-label">会場</div><div class="info-value">${esc(c.venue||'―')}</div></div>
-        <div class="info-item"><div class="info-label">受講人数</div><div class="info-value">${esc(c.people||'―')}</div></div>
-      </div>
-      <div class="progress-area"><div class="steps-row">
-        ${STEP_KEYS.map((k,i)=>`<div class="step">${stepDot(c.steps[k],k)}<div class="step-label">${STEP_LABELS[i]}</div></div>`).join('')}
-      </div></div>
-      ${c.note?`<div class="note-bar">📝 ${esc(c.note)}</div>`:''}
-    </div>`).join(''):emptyState();
+        <div class="sched-body${isOpen?' open':''}">${bodyHTML}</div>
+      </div>`;
+    }).join('');
+  }
+  // テーブルビュー（全件フラット）
   const tb=document.getElementById('table-body');
   tb.innerHTML=arr.length?arr.map(c=>`<tr>
     <td>${c.no}</td><td><strong>${esc(c.company)}</strong></td>
@@ -534,50 +742,158 @@ function renderPlan(){
   </tr>`).join(''):`<tr><td colspan="16">${emptyState()}</td></tr>`;
 }
 
+function applyCompanyCard(c){
+  const allDone=APPLY_KEYS.every(k=>c.apply[k]==='done');
+  return `<div class="case-card apply-card">
+    <div class="case-card-header">
+      <span class="case-no">No.${c.no}</span>
+      <span class="company-name">${esc(c.company)}</span>
+      ${allDone?'<span class="status-badge badge-hokan">✓ 申請完了</span>':'<span class="status-badge badge-tetsuzuki">申請手続き中</span>'}
+      ${irregularBadge(c)}
+      <div class="card-actions"><button class="icon-btn" onclick="openModal(${c.id})">✏️</button></div>
+    </div>
+    <div class="case-info">
+      <div class="info-item"><div class="info-label">営業担当</div><div class="info-value">${esc(c.sales||'―')}</div></div>
+      <div class="info-item"><div class="info-label">先方担当</div><div class="info-value">${esc(c.contact||'―')}</div></div>
+      <div class="info-item"><div class="info-label">受講日程</div><div class="info-value" style="font-size:12px;">${esc(c.date||'―')}</div></div>
+      <div class="info-item"><div class="info-label">会場</div><div class="info-value">${esc(c.venue||'―')}</div></div>
+      <div class="info-item"><div class="info-label">受講人数</div><div class="info-value">${esc(c.people||'―')}</div></div>
+    </div>
+    <div class="progress-area"><div class="steps-row">
+      ${APPLY_KEYS.map((k,i)=>`<div class="step"><div class="step-dot ${dotClass(c.apply[k])}">${dotText(c.apply[k])}</div><div class="step-label">${APPLY_LABELS[i]}</div></div>`).join('')}
+    </div></div>
+    ${c.note?`<div class="note-bar">📝 ${esc(c.note)}</div>`:''}
+  </div>`;
+}
+
+function renderApplyCompanyGroup(g, colorIdx){
+  if(g.solo){
+    return `<div style="margin-bottom:10px;">${g.companies.map(c=>applyCompanyCard(c)).join('')}</div>`;
+  }
+  const groupLabel=g.name;
+  const total=g.companies.length;
+  const people=g.companies.reduce((s,c)=>s+(parseInt(c.people)||0),0);
+  const salesMap={};
+  g.companies.forEach(c=>{if(c.sales)salesMap[c.sales]=(salesMap[c.sales]||0)+1;});
+  const manager=Object.keys(salesMap).sort((a,b)=>salesMap[b]-salesMap[a])[0]||'';
+  const colorClass=`cg-color-${colorIdx%6}`;
+  return `<div class="company-group ${colorClass}">
+    <div class="company-group-header">
+      <span class="company-group-name">🏢 ${esc(groupLabel)}</span>
+      <div class="company-group-meta">
+        <span>${total}社</span><span>・</span><span>${people}名</span>
+        ${manager?`<span>・</span><span>担当：${esc(manager)}</span>`:''}
+      </div>
+    </div>
+    <div class="company-group-cards">${g.companies.map(c=>applyCompanyCard(c)).join('')}</div>
+  </div>`;
+}
+
 function renderApply(){
   updateStats();
   const q=document.getElementById('asearch-input').value.toLowerCase();
-  const sort=document.getElementById('asort-select').value;
-  let arr=cases.filter(c=>c.steps.approval==='done').filter(c=>!q||c.company.toLowerCase().includes(q)||(c.sales||'').toLowerCase().includes(q));
-  if(sort==='no')arr.sort((a,b)=>a.no-b.no);else arr.sort((a,b)=>a.company.localeCompare(b.company,'ja'));
+  let arr=cases.filter(c=>c.steps.approval==='done').filter(c=>{
+    if(!q)return true;
+    return c.date.toLowerCase().includes(q)||c.company.toLowerCase().includes(q)||(c.sales||'').toLowerCase().includes(q)||(c.contact||'').toLowerCase().includes(q)||(c.groupName||'').toLowerCase().includes(q);
+  });
   const el=document.getElementById('apply-cards');
   if(!arr.length){
     el.innerHTML=`<div class="empty-state"><div class="empty-icon">📨</div><div class="empty-title">申請フェーズの案件がありません</div><div class="empty-desc">計画フェーズで「計画届受理」が✓済になると自動的にここに表示されます。</div></div>`;
     return;
   }
-  el.innerHTML=arr.map(c=>{
-    const allDone=APPLY_KEYS.every(k=>c.apply[k]==='done');
-    return `<div class="case-card apply-card">
-      <div class="case-card-header">
-        <span class="case-no">No.${c.no}</span>
-        <span class="company-name">${esc(c.company)}</span>
-        ${allDone?'<span class="status-badge badge-hokan">✓ 申請完了</span>':'<span class="status-badge badge-tetsuzuki">申請手続き中</span>'}
-        ${irregularBadge(c)}
-        <div class="card-actions"><button class="icon-btn" onclick="openModal(${c.id})">✏️</button></div>
+  // 計画フェーズと同じ buildScheduleGroups を利用
+  const schedGroups=buildScheduleGroups(arr);
+  el.innerHTML=schedGroups.map(sg=>{
+    const allCompanies=sg.groups.flatMap(g=>g.companies);
+    const total=allCompanies.length;
+    const people=allCompanies.reduce((s,c)=>s+(parseInt(c.people)||0),0);
+    const doneCnt=allCompanies.filter(c=>APPLY_KEYS.every(k=>c.apply[k]==='done')).length;
+    const isOpen=openGroups.has('apply:'+sg.key);
+    const hasGroups=sg.groups.some(g=>!g.solo);
+    let bodyHTML='';
+    if(isOpen){
+      bodyHTML=hasGroups
+        ? sg.groups.map((g,i)=>renderApplyCompanyGroup(g,i)).join('')
+        : `<div class="cards-grid">${allCompanies.map(c=>applyCompanyCard(c)).join('')}</div>`;
+    }
+    const keyEsc=sg.key.replace(/'/g,"\\'");
+    return `<div class="sched-group">
+      <div class="sched-group-header" onclick="toggleGroup('apply:${keyEsc}')">
+        <span class="sched-chevron${isOpen?' open':''}">▼</span>
+        <span class="sched-date">📅 ${esc(sg.key)}</span>
+        <div class="sched-stats">
+          <div class="sched-stat"><strong>${total}</strong>件</div>
+          <div class="sched-stat-divider"></div>
+          <div class="sched-stat"><strong>${people}</strong>名</div>
+          <div class="sched-stat-divider"></div>
+          <div class="sched-stat" style="color:var(--green-text);">✓ 申請完了 <strong>${doneCnt}</strong>件</div>
+        </div>
       </div>
-      <div class="case-info">
-        <div class="info-item"><div class="info-label">営業担当</div><div class="info-value">${esc(c.sales||'―')}</div></div>
-        <div class="info-item"><div class="info-label">先方担当</div><div class="info-value">${esc(c.contact||'―')}</div></div>
-        <div class="info-item"><div class="info-label">受講日程</div><div class="info-value" style="font-size:12px;">${esc(c.date||'―')}</div></div>
-        <div class="info-item"><div class="info-label">会場</div><div class="info-value">${esc(c.venue||'―')}</div></div>
-        <div class="info-item"><div class="info-label">受講人数</div><div class="info-value">${esc(c.people||'―')}</div></div>
-      </div>
-      <div class="progress-area"><div class="steps-row">
-        ${APPLY_KEYS.map((k,i)=>`<div class="step"><div class="step-dot ${dotClass(c.apply[k])}">${dotText(c.apply[k])}</div><div class="step-label">${APPLY_LABELS[i]}</div></div>`).join('')}
-      </div></div>
-      ${c.note?`<div class="note-bar">📝 ${esc(c.note)}</div>`:''}
+      <div class="sched-body${isOpen?' open':''}">${bodyHTML}</div>
     </div>`;
   }).join('');
 }
 
 function emptyState(){return `<div class="empty-state"><div class="empty-icon">📋</div><div class="empty-title">案件が見つかりません</div><div class="empty-desc">フィルターを変更するか、新規案件を追加してください。</div></div>`;}
 
+// ── 日付ピッカー ──
+let selectedDates = [];
+
+function renderDateSlots(){
+  const wrap = document.getElementById('date-slots');
+  const label = document.getElementById('date-count-label');
+  wrap.innerHTML = selectedDates.map((d,i)=>`
+    <span class="date-slot">
+      ${formatDateJP(d)}
+      <button class="date-slot-remove" onclick="removeDateSlot(${i})">✕</button>
+    </span>`).join('');
+  label.textContent = `${selectedDates.length} / 5日`;
+  // hidden inputに結合して保存
+  document.getElementById('f-date').value = selectedDates.map(d=>formatDateJP(d)).join('・');
+}
+
+function formatDateJP(isoStr){
+  // "2026-06-03" → "2026/06/03"
+  return String(isoStr).replace(/-/g,'/');
+}
+
+function addDateSlot(){
+  const input = document.getElementById('date-add-input');
+  const val = input.value;
+  if(!val){ toast('日付を選択してください','error'); return; }
+  if(selectedDates.length >= 5){ toast('受講日は最大5日までです','error'); return; }
+  if(selectedDates.includes(val)){ toast('同じ日付が既に追加されています','error'); return; }
+  selectedDates.push(val);
+  selectedDates.sort();
+  input.value = '';
+  renderDateSlots();
+}
+
+function removeDateSlot(i){
+  selectedDates.splice(i,1);
+  renderDateSlots();
+}
+
+function parseDateStr(str){
+  // "2026/06/03・2026/06/17" や "2026-06-03" などをISO配列に変換
+  if(!str) return [];
+  return str.split(/[・\-\/,\s]+/).reduce((acc,part)=>{
+    // YYYY/MM/DD → YYYY-MM-DD
+    const m = part.trim().match(/^(\d{4})[\/\-](\d{1,2})[\/\-](\d{1,2})$/);
+    if(m) acc.push(`${m[1]}-${m[2].padStart(2,'0')}-${m[3].padStart(2,'0')}`);
+    return acc;
+  },[]);
+}
+
 function openModal(id){
   editingId=id||null;
   document.getElementById('modal-title').textContent=id?'案件を編集':'新規案件を追加';
   if(id){
     const c=cases.find(x=>x.id===id);
-    ['company','sales','contact','date','venue','people','bureau','note'].forEach(f=>document.getElementById('f-'+f).value=c[f]||'');
+    ['company','sales','contact','venue','people','bureau','note','groupName'].forEach(f=>document.getElementById('f-'+f).value=c[f]||'');
+    // 日付をスロットに復元
+    selectedDates = parseDateStr(c.date||'');
+    renderDateSlots();
     document.getElementById('f-irreg-deadline').value=c.irregDeadline||'';
     document.getElementById('f-irreg-content').value=c.irregContent||'';
     document.getElementById('f-planDate').value=c.planDate||'';
@@ -586,7 +902,9 @@ function openModal(id){
     STEP_KEYS.forEach(k=>document.getElementById('p-'+k).value=c.steps[k]||'todo');
     APPLY_KEYS.forEach(k=>document.getElementById('a-'+k).value=c.apply[k]||'todo');
   }else{
-    ['company','sales','contact','date','venue','people','bureau','note'].forEach(f=>document.getElementById('f-'+f).value='');
+    ['company','sales','contact','venue','people','bureau','note','groupName'].forEach(f=>document.getElementById('f-'+f).value='');
+    selectedDates = [];
+    renderDateSlots();
     document.getElementById('f-irreg-deadline').value='';
     document.getElementById('f-irreg-content').value='';
     document.getElementById('f-planDate').value='';
@@ -609,6 +927,7 @@ async function saveCase(){
   const steps={};STEP_KEYS.forEach(k=>steps[k]=document.getElementById('p-'+k).value);
   const apply={};APPLY_KEYS.forEach(k=>apply[k]=document.getElementById('a-'+k).value);
   const fields={company,status,steps,apply,
+    groupName:document.getElementById('f-groupName').value.trim(),
     sales:document.getElementById('f-sales').value,contact:document.getElementById('f-contact').value,
     date:document.getElementById('f-date').value,venue:document.getElementById('f-venue').value,
     people:document.getElementById('f-people').value,bureau:document.getElementById('f-bureau').value,
@@ -617,11 +936,84 @@ async function saveCase(){
     irregContent:document.getElementById('f-irreg-content').value.trim(),
     planDate:document.getElementById('f-planDate').value,
   };
-  if(editingId){const c=cases.find(x=>x.id===editingId);Object.assign(c,fields);}
-  else{const maxNo=cases.reduce((m,c)=>Math.max(m,c.no),0);cases.push({id:nextId++,no:maxNo+1,...fields});}
+  // planDocsは既存データを引き継ぐ（編集時）
+  if(editingId){
+    const c=cases.find(x=>x.id===editingId);
+    fields.planDocs = c.planDocs||[];
+    Object.assign(c,fields);
+  } else {
+    fields.planDocs = [];
+    const maxNo=cases.reduce((m,c)=>Math.max(m,c.no),0);
+    cases.push({id:nextId++,no:maxNo+1,...fields});
+  }
   try{await saveCases();toast(editingId?'更新しました ✓':'案件を追加しました ✓','success');closeModal();render();}
   catch(e){setSyncState('error','保存失敗');toast('保存に失敗しました。再度お試しください。','error');}
   btn.disabled=false;btn.textContent='💾 保存する';
+}
+
+// ── PDF アップロード・削除 ──
+async function uploadPlanDoc(event, caseId){
+  const file = event.target.files[0];
+  if(!file) return;
+  if(file.type !== 'application/pdf'){ toast('PDFファイルを選択してください','error'); return; }
+  if(file.size > 10*1024*1024){ toast('ファイルサイズは10MB以下にしてください','error'); return; }
+  const c = cases.find(x=>x.id===caseId);
+  if(!c) return;
+  const uploadingEl = document.getElementById(`pdf-uploading-${caseId}`);
+  if(uploadingEl) uploadingEl.style.display='inline';
+  try {
+    // Base64変換
+    const base64 = await new Promise((resolve,reject)=>{
+      const reader = new FileReader();
+      reader.onload = ()=> resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+    const res = await fetch(GAS_URL, {
+      method:'POST',
+      body: JSON.stringify({
+        action:'uploadFile',
+        caseId: c.id,
+        company: c.company,
+        fileName: file.name,
+        mimeType: file.type,
+        fileData: base64,
+        docType: 'planDocs'
+      })
+    });
+    const json = await res.json();
+    if(!json.ok) throw new Error(json.error||'アップロード失敗');
+    c.planDocs = c.planDocs||[];
+    c.planDocs.push({ fileId: json.fileId, fileName: json.fileName, fileUrl: json.fileUrl });
+    await saveCases();
+    toast('PDFをアップロードしました ✓','success');
+    render();
+  } catch(e) {
+    toast('アップロードに失敗しました: '+e.message,'error');
+  } finally {
+    if(uploadingEl) uploadingEl.style.display='none';
+    event.target.value='';
+  }
+}
+
+async function deletePlanDoc(caseId, fileId){
+  if(!confirm('このPDFを削除しますか？')) return;
+  const c = cases.find(x=>x.id===caseId);
+  if(!c) return;
+  try {
+    const res = await fetch(GAS_URL, {
+      method:'POST',
+      body: JSON.stringify({ action:'deleteFile', fileId })
+    });
+    const json = await res.json();
+    if(!json.ok) throw new Error(json.error||'削除失敗');
+    c.planDocs = (c.planDocs||[]).filter(d=>d.fileId!==fileId);
+    await saveCases();
+    toast('PDFを削除しました','success');
+    render();
+  } catch(e) {
+    toast('削除に失敗しました: '+e.message,'error');
+  }
 }
 
 function confirmDelete(id){
@@ -639,8 +1031,8 @@ async function deleteCase(id){
 }
 
 function exportCSV(){
-  const header=['No','会社名','ステータス','営業担当','先方担当','受講日程','会場','人数','発注書受領','労務士代行','管轄労働局','計画届提出','計画届提出日','申請代行請求書','申請代行契約書','計画届受理','様式8-1号共有','必要書類提出依頼','申請書類提出','支給決定通知書受取','備考','イレギュラー期限','イレギュラー内容'];
-  const rows=cases.map(c=>[c.no,c.company,c.status,c.sales,c.contact,c.date,c.venue,c.people,c.steps.order,c.steps.lawyer,c.bureau,c.steps.plan,c.planDate||'',c.steps.contractInv,c.steps.contractDoc,c.steps.approval,c.apply.form81,c.apply.docreq,c.apply.docsubmit,c.apply.notify,c.note,c.irregDeadline||'',c.irregContent||'']);
+  const header=['No','会社名','グループ会社名','ステータス','営業担当','先方担当','受講日程','会場','人数','発注書受領','労務士代行','管轄労働局','計画届提出','計画届提出日','申請代行請求書','申請代行契約書','計画届受理','様式8-1号共有','必要書類提出依頼','申請書類提出','支給決定通知書受取','備考','イレギュラー期限','イレギュラー内容'];
+  const rows=cases.map(c=>[c.no,c.company,c.groupName||'',c.status,c.sales,c.contact,c.date,c.venue,c.people,c.steps.order,c.steps.lawyer,c.bureau,c.steps.plan,c.planDate||'',c.steps.contractInv,c.steps.contractDoc,c.steps.approval,c.apply.form81,c.apply.docreq,c.apply.docsubmit,c.apply.notify,c.note,c.irregDeadline||'',c.irregContent||'']);
   const csv='\uFEFF'+[header,...rows].map(r=>r.map(v=>`"${String(v||'').replace(/"/g,'""')}"`).join(',')).join('\n');
   const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
   a.download=`AI研修_案件管理_${new Date().toISOString().slice(0,10)}.csv`;a.click();
